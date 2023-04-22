@@ -1,30 +1,31 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import NavigationBar from './components/NavigationBar.vue'
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+    
+  <NavigationBar/>
+  <div class="yea">
+    <header>
+    
+      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
+      <div class="wrapper">
+        <HelloWorld msg="You did it!" />
 
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
+        <nav>
+          <RouterLink to="/">Home</RouterLink>
+          <RouterLink to="/about">About</RouterLink>
+        </nav>
+      </div>
+    </header>
+  </div>
   <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
-}
 
 .logo {
   display: block;
@@ -63,6 +64,20 @@ nav a:first-of-type {
     padding-right: calc(var(--section-gap) / 2);
   }
 
+  .yea {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+    justify-content: center;
+    align-content: center;
+  }
+
+  .yea2 {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+  }
+      
   .logo {
     margin: 0 2rem 0 0;
   }
@@ -81,5 +96,6 @@ nav a:first-of-type {
     padding: 1rem 0;
     margin-top: 1rem;
   }
+  
 }
 </style>
