@@ -1,14 +1,35 @@
-<script setup lang="ts">
-import { RouterLink} from 'vue-router'
+<script lang="ts">
+import { RouterLink } from 'vue-router'
+import axios from 'axios';
+
+export default {
+    methods: {
+        async LoginRequest() {
+
+            console.log("Authorizing");
+            const searchParams = {
+                "client_id": "21740",
+                "redirect_uri": "https://gst5.osu.sg",
+                "scope": "public identify",
+            };
+
+            const data = await axios.get('https://osu.ppy.sh/oauth/authorize', {
+                params: searchParams
+            });
+            console.log(data);
+        }
+    }
+}
 </script>
 
 <template>
     <header>
         <nav>
             <ul class="navigation">
-                <li><RouterLink class="link" :to="{name: 'home'}">Home</RouterLink></li>
-                <li><RouterLink class="link" :to="{name: ''}">Info</RouterLink></li>
-                <li><RouterLink class="link" :to="{name: ''}">Teams</RouterLink></li>
+                <li><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
+                <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
+                <li><RouterLink class="link" :to="{name: ''}">TEAMS</RouterLink></li>
+                <li><a class="login-button" @click="LoginRequest">osu! Login</a></li>
             </ul>
         </nav>
     </header>   
@@ -46,7 +67,6 @@ header ul, header .link {
 }
 
 header li {
-    text-transform: uppercase;
     padding: 16px;
     margin: left;
 }
@@ -62,4 +82,16 @@ header .link:hover {
     color:#00afea;
     border-color:#00afea;
 }
+
+header .login-button {
+    background-color: #ff7cbb;
+    padding: 10px;
+    border-radius: 15px;
+    color: rgb(255, 255, 255);
+}
+
+header li:last-of-type {
+    margin-left: auto;
+}
+
 </style>

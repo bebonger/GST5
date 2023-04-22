@@ -17,7 +17,7 @@ import NavigationBar from './components/NavigationBar.vue'
 
         <nav>
           <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/info">About</RouterLink>
         </nav>
       </div>
     </header>
