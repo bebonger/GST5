@@ -4,20 +4,6 @@ import axios from 'axios';
 
 export default {
     methods: {
-        async LoginRequest() {
-
-            console.log("Authorizing");
-            const searchParams = {
-                "client_id": "21740",
-                "redirect_uri": "https://gst5.osu.sg",
-                "scope": "public identify",
-            };
-
-            const data = await axios.get('https://osu.ppy.sh/oauth/authorize', {
-                params: searchParams
-            });
-            console.log(data);
-        }
     }
 }
 </script>
@@ -29,7 +15,7 @@ export default {
                 <li><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: ''}">TEAMS</RouterLink></li>
-                <li><a class="login-button" @click="LoginRequest">osu! Login</a></li>
+                <li><a class="login-button" href="/api/login">osu! Login</a></li>
             </ul>
         </nav>
     </header>   
