@@ -1,9 +1,9 @@
 <script lang="ts">
 import { RouterLink } from 'vue-router'
-import axios from 'axios';
 
 export default {
-    methods: {
+    created() {
+
     }
 }
 </script>
@@ -15,7 +15,7 @@ export default {
                 <li><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: ''}">TEAMS</RouterLink></li>
-                <li><a class="login-button" href="/api/login">osu! Login</a></li>
+                <li><a class="login-button" href="/api/auth">osu! Login</a></li>
             </ul>
         </nav>
     </header>   

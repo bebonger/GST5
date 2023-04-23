@@ -2,6 +2,23 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import NavigationBar from './components/NavigationBar.vue'
+import { inject } from 'vue'
+</script>
+
+<script lang="ts">
+export default {
+  name: 'App',
+  created() {
+    const user_cookie = this.$cookies.get("user_token");
+
+    if (user_cookie) {
+      const axios: any = inject('axios');
+      axios.post('http://localhost:9000/api/get-user', {'token': user_cookie}).then((response: { data: any }) => {
+          console.log(response.data)
+      })
+    }
+  }
+}
 </script>
 
 <template>
