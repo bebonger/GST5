@@ -3,6 +3,8 @@ import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import NavigationBar from './components/NavigationBar.vue'
 import { inject } from 'vue'
+import { useUserDataStore } from './stores/userData'
+import type { User } from './stores/userData'
 </script>
 
 <script lang="ts">
@@ -14,7 +16,23 @@ export default {
     if (user_cookie) {
       const axios: any = inject('axios');
       axios.post('http://localhost:9000/api/get-user', {'token': user_cookie}).then((response: { data: any }) => {
-          console.log(response.data)
+
+        let user : User = {
+          avatar_url: response.data.avatar_url,
+          country_code: response.data.country_code,
+          id: response.data.id,
+          username: response.data.username,
+          is_restricted: response.data.is_restricted,
+          global_rank: response.data.global_rank,
+          country_rank: response.data.country_rank
+        }
+
+        // let userObj: User = JSON.parse(response.data);
+        // console.log(user)
+        
+        const userDataStore = useUserDataStore()
+        userDataStore.SetUser(response.data, user_cookie)
+        console.log(userDataStore.IsLoggedIn)
       })
     }
   }

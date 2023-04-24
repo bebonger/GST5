@@ -1,11 +1,12 @@
-<script lang="ts">
-import { RouterLink } from 'vue-router'
+<script setup lang="ts">
+import { RouterLink, useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { computed } from 'vue'
+import { useUserDataStore } from '../stores/userData'
+import type { User } from '../stores/userData'
 
-export default {
-    created() {
+const userDataStore = useUserDataStore();
 
-    }
-}
 </script>
 
 <template>
@@ -15,7 +16,10 @@ export default {
                 <li><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: ''}">TEAMS</RouterLink></li>
-                <li><a class="login-button" href="/api/auth">osu! Login</a></li>
+                <li>
+                    <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/auth">osu! Login</a>
+                    <div v-else>{{ userDataStore.user?.username }}</div>
+                </li>
             </ul>
         </nav>
     </header>   
