@@ -18,7 +18,7 @@ const userDataStore = useUserDataStore();
                 <li><RouterLink class="link" :to="{name: ''}">TEAMS</RouterLink></li>
                 <li>
                     <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/auth">osu! Login</a>
-                    <div v-else>{{ userDataStore.user?.username }}</div>
+                    <div v-else><img :src="userDataStore.user?.avatar_url"><div>{{ userDataStore.user?.username }}</div></div>
                 </li>
             </ul>
         </nav>
@@ -70,13 +70,21 @@ header .link {
 
 header .link:hover {
     color:#00afea;
-    border-color:#00afea;
+    border-color:transparent;
+    background-color: transparent;
 }
 
 header .login-button {
     background-color: #ff7cbb;
     padding: 10px;
-    border-radius: 15px;
+    border-radius: 20px;
+    color: rgb(255, 255, 255);
+}
+
+header .login-button:hover {
+    background-color: #fd68b0;
+    padding: 12px;
+    border-radius: 20px;
     color: rgb(255, 255, 255);
 }
 
