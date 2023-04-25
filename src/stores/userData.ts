@@ -5,27 +5,31 @@ import type internal from 'stream'
 export const useUserDataStore = defineStore('userData', ({
     state: () => ({
         user: null as User | null,
-        token: null as string | null
     }),
     getters: {
         IsLoggedIn: (state) => {
-            return !!state.token
+            return !!state.user
         },
     },
     actions: {
-        SetUser(user: User, token: any) {
+        SetUser(user: User) {
             this.user = user
-            this.token = token;
+
         }
     }
 })) 
 
 export interface User {
-    avatar_url: string;
-    country_code: string;
-    id: number;
-    username: string;
-    is_restricted: boolean;
-    global_rank: number;
-    country_rank: number;
+    avatar_url: String,
+    country_code: String,
+    default_group: String,
+    id: Number,
+    is_active: Boolean,
+    is_bot: Boolean,
+    is_deleted: Boolean,
+    username: String,
+    is_restricted: Boolean,
+    global_rank: Number,
+    country_rank: Number,
+    badges: Number,
 }

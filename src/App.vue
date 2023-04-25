@@ -11,30 +11,30 @@ import type { User } from './stores/userData'
 export default {
   name: 'App',
   created() {
-    const user_cookie = this.$cookies.get("user_token");
-
-    if (user_cookie) {
-      const axios: any = inject('axios');
-      axios.post('http://localhost:9000/api/get-user', {'token': user_cookie}).then((response: { data: any }) => {
+    const axios: any = inject('axios');
+      axios.get('http://localhost:9000/api/get-user', { withCredentials: true }).then((response: { data: any }) => {
 
         let user : User = {
-          avatar_url: response.data.avatar_url,
-          country_code: response.data.country_code,
-          id: response.data.id,
-          username: response.data.username,
-          is_restricted: response.data.is_restricted,
-          global_rank: response.data.global_rank,
-          country_rank: response.data.country_rank
+            avatar_url: response.data.avatar_url,
+            country_code: response.data.country_code,
+            default_group: response.data.default_group,
+            id: response.data.id,
+            is_active: response.data.is_active,
+            is_bot: response.data.is_bot,
+            is_deleted: response.data.is_deleted,
+            username: response.data.username,
+            is_restricted: response.data.is_restricted,
+            global_rank: response.data.global_rank,
+            country_rank: response.data.country_rank,
+            badges: response.data.badges
         }
 
-        // let userObj: User = JSON.parse(response.data);
-        // console.log(user)
+        console.log(user);
         
         const userDataStore = useUserDataStore()
-        userDataStore.SetUser(response.data, user_cookie)
+        userDataStore.SetUser(user)
         console.log(userDataStore.IsLoggedIn)
       })
-    }
   }
 }
 </script>
