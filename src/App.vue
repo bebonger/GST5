@@ -12,7 +12,7 @@ export default {
   name: 'App',
   created() {
     const axios: any = inject('axios');
-      axios.get('http://localhost:9000/api/get-user', { withCredentials: true }).then((response: { data: any }) => {
+      axios.get('/api/get-user', { withCredentials: true }).then((response: { data: any }) => {
 
         let user : User = {
             avatar_url: response.data.avatar_url,
