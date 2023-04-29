@@ -24,7 +24,7 @@ app.use(VueAxios, axios);
 app.provide('axios', app.config.globalProperties.axios);
 
 try {
-axios.get('/api/get-user', { withCredentials: true }).then((response: { data: any }) => {
+axios.get('/api/user/get-user', { withCredentials: true }).then((response: { data: any }) => {
 
     const user : User = {
         avatar_url: response.data.avatar_url,
