@@ -1,10 +1,12 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
-import type internal from 'stream'
+import { ref, computed } from 'vue';
+import { defineStore } from 'pinia';
+import type internal from 'stream';
+import type { UserInfo } from "../Interfaces/user";
+import { getCurrentInstance } from 'vue';
 
 export const useUserDataStore = defineStore('userData', ({
     state: () => ({
-        user: null as User | null,
+        user: null as UserInfo | null,
     }),
     getters: {
         IsLoggedIn: (state) => {
@@ -12,24 +14,20 @@ export const useUserDataStore = defineStore('userData', ({
         },
     },
     actions: {
-        SetUser(user: User) {
-            this.user = user
-
+        async SetUser() {
+            const response = await useAxios().get("/api/user");
+            console.log(response);
+            this.user = response.data;
         }
     }
-})) 
+}));
 
-export interface User {
-    avatar_url: String,
-    country_code: String,
-    default_group: String,
-    id: Number,
-    is_active: Boolean,
-    is_bot: Boolean,
-    is_deleted: Boolean,
-    username: String,
-    is_restricted: Boolean,
-    global_rank: Number,
-    country_rank: Number,
-    badges: Number,
-}
+export function useAxios() {
+    const app = getCurrentInstance()?.appContext.app
+  
+    if (app) {
+      return app.config.globalProperties.axios
+    } else {
+      throw new Error('Could not get app instance')
+    }
+  }

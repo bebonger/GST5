@@ -17,8 +17,9 @@ const userDataStore = useUserDataStore();
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
                 <li>
-                    <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/user/auth">osu! Login</a>
+                    <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">osu! Login</a>
                     <div v-else><img :src="userDataStore.user?.avatar_url as string"><div>{{ userDataStore.user?.username }}</div></div>
+                    <a class="login-button" href="/api/login/discord">Discord Login</a>
                 </li>
             </ul>
         </nav>

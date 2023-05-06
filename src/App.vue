@@ -4,15 +4,15 @@ import HelloWorld from './components/HelloWorld.vue'
 import NavigationBar from './components/NavigationBar.vue'
 import { inject } from 'vue'
 import { useUserDataStore } from './stores/userData'
-import type { User } from './stores/userData'
 </script>
 
 <script lang="ts">
 
 export default {
   name: 'App',
-  created() {
-    
+  mounted() {
+    const userStore = useUserDataStore();
+    userStore.SetUser();
   }
 }
 </script>
