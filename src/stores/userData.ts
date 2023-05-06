@@ -10,10 +10,10 @@ export const useUserDataStore = defineStore('userData', ({
     }),
     getters: {
         IsLoggedIn: (state) => {
-            return !!state.user
+            return !!state.user?.osu
         },
         IsLoggedInDiscord: (state) => {
-            return !!state.user?.discord.userID
+            return !!state.user?.discord
         }
     },
     actions: {
