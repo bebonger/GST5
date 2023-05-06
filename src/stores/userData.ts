@@ -12,6 +12,9 @@ export const useUserDataStore = defineStore('userData', ({
         IsLoggedIn: (state) => {
             return !!state.user
         },
+        IsLoggedInDiscord: (state) => {
+            return !!state.user?.discord.userID
+        }
     },
     actions: {
         async SetUser() {

@@ -3,7 +3,6 @@ import { RouterLink, useRoute } from 'vue-router'
 import { storeToRefs } from 'pinia'
 import { computed } from 'vue'
 import { useUserDataStore } from '../stores/userData'
-import type { User } from '../stores/userData'
 
 const userDataStore = useUserDataStore();
 
@@ -18,8 +17,9 @@ const userDataStore = useUserDataStore();
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
                 <li>
                     <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">osu! Login</a>
-                    <div v-else><img :src="userDataStore.user?.avatar_url as string"><div>{{ userDataStore.user?.username }}</div></div>
-                    <a class="login-button" href="/api/login/discord">Discord Login</a>
+                    <div v-else-if="userDataStore.IsLoggedIn"><img :src="userDataStore.user?.osu.avatar"><div>{{userDataStore.user?.osu.username}}</div></div>
+                    <a v-if ="!userDataStore.IsLoggedInDiscord && userDataStore.IsLoggedIn"  class="login-button" href="/api/login/discord">Discord Login</a>
+                    <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
                 </li>
             </ul>
         </nav>
