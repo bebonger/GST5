@@ -13,7 +13,7 @@ export const useUserDataStore = defineStore('userData', ({
             return !!state.user?.osu
         },
         IsLoggedInDiscord: (state) => {
-            return !!state.user?.discord
+            return !!state.user?.discord?.userID
         }
     },
     actions: {
