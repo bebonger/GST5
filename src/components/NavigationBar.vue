@@ -18,8 +18,13 @@ const userDataStore = useUserDataStore();
                 <li>
                     <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">osu! Login</a>
                     <div v-else-if="userDataStore.IsLoggedIn"><img :src="userDataStore.user?.osu.avatar"><div>{{userDataStore.user?.osu.username}}</div></div>
+                </li>
+                <li>
                     <a v-if ="!userDataStore.IsLoggedInDiscord && userDataStore.IsLoggedIn"  class="login-button" href="/api/login/discord">Discord Login</a>
                     <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
+                </li>
+                <li>
+                    <a v-if ="userDataStore.IsLoggedIn"  class="login-button" href="/api/logout">Logout</a>
                 </li>
             </ul>
         </nav>

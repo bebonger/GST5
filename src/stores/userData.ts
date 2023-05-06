@@ -1,6 +1,4 @@
-import { ref, computed } from 'vue';
 import { defineStore } from 'pinia';
-import type internal from 'stream';
 import type { UserInfo } from "../Interfaces/user";
 import { getCurrentInstance } from 'vue';
 

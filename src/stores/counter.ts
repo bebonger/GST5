@@ -1,6 +1,5 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import type internal from 'stream'
 
 export const useCounterStore = defineStore('counter', () => {
   const count = ref(0)
