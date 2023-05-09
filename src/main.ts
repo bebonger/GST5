@@ -20,8 +20,9 @@ app.use(createPinia())
 app.use(router)
 app.use(VueCookies);
 app.use(VueAxios, axios);
-app.provide('axios', app.config.globalProperties.axios);
+// app.provide('axios', app.config.globalProperties.axios);
 
 axios.defaults.withCredentials = true
 
 app.mount('#app')
+

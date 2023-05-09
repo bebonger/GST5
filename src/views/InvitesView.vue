@@ -7,7 +7,7 @@ export default {
       loading: false,
       post: null,
       error: null,
-      teamsJSON: ""
+      invitesJSON: ""
     }
   },
   created() {
@@ -28,10 +28,8 @@ export default {
       this.loading = true
 
       try {
-        const response = await this.$http.get("/api/teams")
-        const beautifiedJSON = JSON.stringify(response.data, null, 2); // use null as the replacer and 2 spaces as the indent
-        console.log(beautifiedJSON); // output the beautified JSON to the console
-        this.teamsJSON = beautifiedJSON
+        const response = await this.$http.get("/api/teams/invites")
+        this.invitesJSON = response.data
       }
       catch (err) {
         console.error(err);
@@ -43,10 +41,10 @@ export default {
 
 <template>
   <div class="about">
-    <h1 v-if="loading">This is the teams page</h1>
-    <h1 v-else-if="!loading">This is the teams page</h1>
+    <h1 v-if="loading">This is the invites page</h1>
+    <h1 v-else-if="!loading">This is the invites page</h1>
     <h1 v-else>error</h1>
-    <p>{{teamsJSON}}</p>
+    <p>{{invitesJSON}}</p>
   </div>
 </template>
 

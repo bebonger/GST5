@@ -1,11 +1,28 @@
 <script setup lang="ts">
-import { RouterLink, useRoute } from 'vue-router'
-import { storeToRefs } from 'pinia'
-import { computed } from 'vue'
-import { useUserDataStore } from '../stores/userData'
-
+import { RouterLink, useRoute } from 'vue-router';
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
+import { useUserDataStore } from '../stores/userData';
 const userDataStore = useUserDataStore();
+</script>
 
+<script lang="ts">
+
+export default {
+    data() {
+
+    },
+    inject: ["axios"],
+    methods: {
+        async invite() {
+            const response = await this.$http.post('api/teams/send-invite', {
+                invitee: 8301957
+            });
+            
+            console.log(response.data);
+        }
+    }
+}
 </script>
 
 <template>
@@ -15,6 +32,7 @@ const userDataStore = useUserDataStore();
                 <li><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
+                <li><RouterLink class="link" :to="{name: 'invites'}">INVITES</RouterLink></li>
                 <li>
                     <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">osu! Login</a>
                     <div v-else-if="userDataStore.IsLoggedIn"><img :src="userDataStore.user?.osu.avatar"><div>{{userDataStore.user?.osu.username}}</div></div>
@@ -22,6 +40,9 @@ const userDataStore = useUserDataStore();
                 <li>
                     <a v-if ="!userDataStore.IsLoggedInDiscord && userDataStore.IsLoggedIn"  class="login-button" href="/api/login/discord">Discord Login</a>
                     <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
+                </li>
+                <li>
+                    <a v-if ="userDataStore.IsLoggedIn"  class="login-button" @click="invite">Invite GT</a>
                 </li>
                 <li>
                     <a v-if ="userDataStore.IsLoggedIn"  class="login-button" href="/api/logout">Logout</a>
@@ -92,6 +113,7 @@ header .login-button:hover {
     padding: 12px;
     border-radius: 20px;
     color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 
 header li:last-of-type {

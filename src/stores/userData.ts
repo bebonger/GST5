@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import type { UserInfo } from "../Interfaces/user";
-import { getCurrentInstance } from 'vue';
+import { useAxios } from '../plugins/axios';
 
 export const useUserDataStore = defineStore('userData', ({
     state: () => ({
@@ -16,19 +16,9 @@ export const useUserDataStore = defineStore('userData', ({
     },
     actions: {
         async SetUser() {
-            const response = await useAxios().get("/api/user");
+            const response = await useAxios().get("/api/user/me");
             console.log(response);
             this.user = response.data;
         }
     }
 }));
-
-export function useAxios() {
-    const app = getCurrentInstance()?.appContext.app
-  
-    if (app) {
-      return app.config.globalProperties.axios
-    } else {
-      throw new Error('Could not get app instance')
-    }
-  }
