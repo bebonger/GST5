@@ -8,6 +8,7 @@ export interface UserInfo {
         avatar: string;
         userID: number;
         username: string;
+        global_rank: number;
     };
     staff: {
         headStaff: boolean;

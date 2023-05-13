@@ -8,9 +8,8 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios';
 
-import { useUserDataStore } from './stores/userData'
-
-import { inject } from 'vue'
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-bootstrap.css';
 
 import './assets/main.css'
 
@@ -20,6 +19,7 @@ app.use(createPinia())
 app.use(router)
 app.use(VueCookies);
 app.use(VueAxios, axios);
+app.use(ToastPlugin);
 // app.provide('axios', app.config.globalProperties.axios);
 
 axios.defaults.withCredentials = true

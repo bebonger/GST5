@@ -12,7 +12,15 @@ export default {
   name: 'App',
   mounted() {
     const userStore = useUserDataStore();
-    userStore.SetUser();
+    userStore.SetUser().then(() => {
+      console.log("bruh");
+
+      if (userStore.IsLoggedIn) {
+        this.$toast.open({
+          message: `Logged in as ${userStore.user?.osu.username}`
+        });
+      }
+    });
   }
 }
 </script>

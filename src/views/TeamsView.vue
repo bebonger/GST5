@@ -1,56 +1,59 @@
 <script lang="ts">
+import PlayerDropdownSearch from "@/components/PlayerDropdownSearch.vue"
 import { inject }  from "vue"
 
 export default {
-  data() {
-    return {
-      loading: false,
-      post: null,
-      error: null,
-      teamsJSON: ""
-    }
-  },
-  created() {
-    // watch the params of the route to fetch the data again
-    this.$watch(
-      () => this.$route.params,
-      () => {
-        this.fetchData()
-      },
-      // fetch the data when the view is created and the data is
-      // already being observed
-      { immediate: true }
-    )
-  },
-  methods: {
-    async fetchData() {
-      this.error = this.post = null
-      this.loading = true
-
-      try {
-        const response = await this.$http.get("/api/teams")
-        const beautifiedJSON = JSON.stringify(response.data, null, 2); // use null as the replacer and 2 spaces as the indent
-        console.log(beautifiedJSON); // output the beautified JSON to the console
-        this.teamsJSON = beautifiedJSON
-      }
-      catch (err) {
-        console.error(err);
-      }
+    data() {
+        return {
+            loading: false,
+            post: null,
+            error: null,
+            teamsJSON: ""
+        };
     },
-  }
+    created() {
+        // watch the params of the route to fetch the data again
+        this.$watch(() => this.$route.params, () => {
+            this.fetchData();
+        }, 
+        // fetch the data when the view is created and the data is
+        // already being observed
+        { immediate: true });
+    },
+    methods: {
+        async fetchData() {
+            this.error = this.post = null;
+            this.loading = true;
+            try {
+                const response = await this.$http.get("/api/teams");
+                const beautifiedJSON = JSON.stringify(response.data, null, 2); // use null as the replacer and 2 spaces as the indent
+                console.log(beautifiedJSON); // output the beautified JSON to the console
+                this.teamsJSON = beautifiedJSON;
+            }
+            catch (err) {
+                console.error(err);
+            }
+        },
+    },
+    components: { PlayerDropdownSearch }
 }
 </script>
 
 <template>
+  <PlayerDropdownSearch/>
+
+  <!--
   <div class="about">
     <h1 v-if="loading">This is the teams page</h1>
     <h1 v-else-if="!loading">This is the teams page</h1>
     <h1 v-else>error</h1>
     <p>{{teamsJSON}}</p>
   </div>
+  -->
 </template>
 
-<style>
+<style scoped lang="scss">
+
 @media (min-width: 1024px) {
   .about {
     min-height: 100vh;
