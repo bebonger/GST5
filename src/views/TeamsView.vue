@@ -1,3 +1,8 @@
+<script setup lang="ts">
+  import { useUserDataStore } from "@/stores/userData"
+  const userDataStore = useUserDataStore();
+</script>
+
 <script lang="ts">
 import PlayerDropdownSearch from "@/components/PlayerDropdownSearch.vue"
 import { inject }  from "vue"
@@ -40,8 +45,7 @@ export default {
 </script>
 
 <template>
-  <PlayerDropdownSearch/>
-
+  <div v-if="userDataStore.IsLoggedIn"><PlayerDropdownSearch/></div>
   <!--
   <div class="about">
     <h1 v-if="loading">This is the teams page</h1>

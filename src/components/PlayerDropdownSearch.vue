@@ -10,7 +10,7 @@
     </ul>
   </div>
 </template>
-  
+
 <script lang="ts">
 import type { UserInfo } from "@/Interfaces/user";
 import axios from 'axios';
@@ -20,7 +20,7 @@ export default {
     return {
       searchQuery: '',
       options: [] as UserInfo[],
-      timeoutId: undefined as number | undefined,
+      timeoutId: undefined as ReturnType<typeof setTimeout> | undefined,
     };
   },
   methods: {

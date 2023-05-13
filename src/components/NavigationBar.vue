@@ -42,9 +42,6 @@ export default {
                     <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
                 </li>
                 <li>
-                    <a v-if ="userDataStore.IsLoggedIn"  class="login-button" @click="invite">Invite GT</a>
-                </li>
-                <li>
                     <a v-if ="userDataStore.IsLoggedIn"  class="login-button" href="/api/logout">Logout</a>
                 </li>
             </ul>
