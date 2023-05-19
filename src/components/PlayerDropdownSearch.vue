@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     async invitePlayer(option: UserInfo) {
-      const response = await this.$http.post('/api/teams/send-invite', {
+      const response = await this.$http.post('/api/teams/invites/send', {
         invitee: option.osu.userID
       });
 
