@@ -2,12 +2,21 @@
 
 #app {
   font-weight: normal;
-  font-family: Gotham;
+  font-family: Din;
 }
 
 @font-face {
-  font-family: Gotham;
-  src: url("fonts/Gotham Black Regular.ttf");
+  font-family: Din;
+  src: url("./fonts/DIN-2014_Regular.woff") format('woff');
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Din;
+  src: url("./fonts/DIN-2014_Bold.woff") format('woff');
+  font-style: normal;
+  font-weight: 600;
 }
 
 a,

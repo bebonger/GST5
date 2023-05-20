@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
 import NavigationBar from './components/NavigationBar.vue'
 import { inject } from 'vue'
 import { useUserDataStore } from './stores/userData'
+import NavbarGap from './components/NavbarGap.vue'
 </script>
 
 <script lang="ts">
@@ -28,19 +28,10 @@ export default {
 <template>
     
   <NavigationBar/>
+  <NavbarGap/>
   <div class="yea">
     <header>
-    
-      <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
 
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-
-        <nav>
-          <RouterLink to="/">Home</RouterLink>
-          <RouterLink to="/info">About</RouterLink>
-        </nav>
-      </div>
     </header>
   </div>
   <RouterView />

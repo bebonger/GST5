@@ -46,75 +46,77 @@ export default {
                 </li>
             </ul>
         </nav>
-    </header>   
+    </header>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 header {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 1);
     z-index: 99;
     width: 100%;
+    height: 80px;
     position: fixed;
     transition: 0.5s ease all;
     color: #fff;
-}
 
-header .navigation {
-    display: flex;
-    align-items: baseline;
-}
+    .navigation {
+        display: flex;
+        align-items: baseline;
+    }
 
-header .nav {
-    display: flex;
-    flex-direction: row;
-    padding: 12px 0;
-    transition: .5s ease all;
-    width: 90%;
-    margin: 0 auto;
-}
+    nav {
+        display: flex;
+        flex-direction: row;
+        padding: 12px 0;
+        transition: .5s ease all;
+        width: 90%;
+        margin: 0 0;
 
-header ul, header .link {
-    font-weight: 500;
-    color: #fff;
-    list-style:none;
-    text-decoration: none;
-}
+        a.router-link-exact-active {
+            color:#00afea;
+        }
 
-header li {
-    padding: 16px;
-    margin: left;
-}
+    }
 
-header .link {
-    font-size: 14px;
-    transition: .5s ease all;
-    padding-bottom: 4px;
-    border-bottom: 1px solid transparent;
-}
+    ul, 
+    .link {
+        font-weight: 500;
+        color: #fff;
+        list-style:none;
+        text-decoration: none;
+    }
 
-header .link:hover {
-    color:#00afea;
-    border-color:transparent;
-    background-color: transparent;
-}
+    li {
+        padding: 16px;
+        margin: left;
+    }
 
-header .login-button {
-    background-color: #ff7cbb;
-    padding: 10px;
-    border-radius: 20px;
-    color: rgb(255, 255, 255);
-}
+    .link {
+        font-size: 16px;
+        transition: .5s ease all;
+        padding-bottom: 4px;
+        border-bottom: 1px solid transparent;
+    }
 
-header .login-button:hover {
-    background-color: #fd68b0;
-    padding: 12px;
-    border-radius: 20px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
-}
+    .link:hover {
+        color:#00afea;
+        border-color:transparent;
+        background-color: transparent;
+    }
 
-header li:last-of-type {
-    margin-left: auto;
-}
+    .login-button {
+        background-color: #ff7cbb;
+        padding: 10px;
+        border-radius: 20px;
+        color: rgb(255, 255, 255);
+    }
 
+    .login-button:hover {
+        background-color: #fd68b0;
+        padding: 12px;
+        border-radius: 20px;
+        color: rgb(255, 255, 255);
+        cursor: pointer;
+    }
+}
 </style>
