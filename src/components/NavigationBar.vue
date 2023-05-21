@@ -2,26 +2,13 @@
 import { RouterLink, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import { useUserDataStore } from '../stores/userData';
-const userDataStore = useUserDataStore();
+import UserInfo from './UserInfo.vue';
 </script>
 
 <script lang="ts">
 
 export default {
-    data() {
-
-    },
-    inject: ["axios"],
-    methods: {
-        async invite() {
-            const response = await this.$http.post('api/teams/send-invite', {
-                invitee: 8301957
-            });
-            
-            console.log(response.data);
-        }
-    }
+    components: { UserInfo }
 }
 </script>
 
@@ -33,17 +20,7 @@ export default {
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'invites'}">INVITES</RouterLink></li>
-                <li>
-                    <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">osu! Login</a>
-                    <div v-else-if="userDataStore.IsLoggedIn"><img :src="userDataStore.user?.osu.avatar"><div>{{userDataStore.user?.osu.username}}</div></div>
-                </li>
-                <li>
-                    <a v-if ="!userDataStore.IsLoggedInDiscord && userDataStore.IsLoggedIn"  class="login-button" href="/api/login/discord">Discord Login</a>
-                    <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
-                </li>
-                <li>
-                    <a v-if ="userDataStore.IsLoggedIn"  class="login-button" href="/api/logout">Logout</a>
-                </li>
+                <li class="user-info"><UserInfo/></li>
             </ul>
         </nav>
     </header>
@@ -51,31 +28,41 @@ export default {
 
 <style scoped lang="scss">
 header {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: #d85a00;
     z-index: 99;
     width: 100%;
     height: 80px;
     position: fixed;
     transition: 0.5s ease all;
     color: #fff;
+    padding: 0px;
+    border-color: white;
+    border-bottom-style: solid;
+    border-width: 1px;
 
     .navigation {
+        width: 100%;
         display: flex;
-        align-items: baseline;
+        justify-content: space-between;
+        align-items: center;
     }
 
     nav {
         display: flex;
         flex-direction: row;
-        padding: 12px 0;
+        padding: 4px 0;
         transition: .5s ease all;
-        width: 90%;
+        width: 100%;
         margin: 0 0;
 
         a.router-link-exact-active {
             color:#00afea;
         }
 
+    }
+
+    .user-info {
+        margin-left: auto;
     }
 
     ul, 
@@ -102,21 +89,6 @@ header {
         color:#00afea;
         border-color:transparent;
         background-color: transparent;
-    }
-
-    .login-button {
-        background-color: #ff7cbb;
-        padding: 10px;
-        border-radius: 20px;
-        color: rgb(255, 255, 255);
-    }
-
-    .login-button:hover {
-        background-color: #fd68b0;
-        padding: 12px;
-        border-radius: 20px;
-        color: rgb(255, 255, 255);
-        cursor: pointer;
     }
 }
 </style>
