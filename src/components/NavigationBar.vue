@@ -28,17 +28,19 @@ export default {
 
 <style scoped lang="scss">
 header {
-    background-color: #d85a00;
+    background-color: rgba(63, 155, 185, 0);
     z-index: 99;
     width: 100%;
-    height: 80px;
+    height: 60px;
     position: fixed;
     transition: 0.5s ease all;
     color: #fff;
     padding: 0px;
+    /*
     border-color: white;
     border-bottom-style: solid;
     border-width: 1px;
+    */
 
     .navigation {
         width: 100%;
@@ -50,13 +52,15 @@ header {
     nav {
         display: flex;
         flex-direction: row;
-        padding: 4px 0;
         transition: .5s ease all;
         width: 100%;
+        height: 100%;
         margin: 0 0;
+        align-items: center;
 
         a.router-link-exact-active {
-            color:#00afea;
+            color:white;
+            border-color:#141414;
         }
 
     }
@@ -65,29 +69,31 @@ header {
         margin-left: auto;
     }
 
+    
     ul, 
     .link {
-        font-weight: 500;
+        font-weight: 600;
         color: #fff;
         list-style:none;
         text-decoration: none;
     }
 
     li {
-        padding: 16px;
+        padding: 0px 16px;
         margin: left;
+        height: 100%;
     }
 
     .link {
-        font-size: 16px;
+        font-size: 18px;
         transition: .5s ease all;
-        padding-bottom: 4px;
-        border-bottom: 1px solid transparent;
+        padding: 4px;
+        border-bottom: 2px solid transparent;
     }
 
     .link:hover {
-        color:#00afea;
-        border-color:transparent;
+        color: white;
+        border-color:#141414;
         background-color: transparent;
     }
 }

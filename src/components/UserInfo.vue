@@ -6,11 +6,13 @@ const userDataStore = useUserDataStore();
 
 <template>
     <div class="user-info">
-        <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">osu! Login</a>
-        <div v-else-if="userDataStore.IsLoggedIn"><img :src="userDataStore.user?.osu.avatar"><div>{{userDataStore.user?.osu.username}}</div></div>
+        <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">LOGIN</a>
+        <div v-else-if="userDataStore.IsLoggedIn" class="flex-container"><img :src="userDataStore.user?.osu.avatar">{{userDataStore.user?.osu.username}}</div>
+        <!--
         <a v-if ="!userDataStore.IsLoggedInDiscord && userDataStore.IsLoggedIn"  class="login-button" href="/api/login/discord">Discord Login</a>
         <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
         <a v-if ="userDataStore.IsLoggedIn"  class="login-button" href="/api/logout">Logout</a>
+        -->
     </div>
 </template>
 
@@ -27,26 +29,32 @@ header {
     position: relative;
     gap: 10px;
     line-height: auto;
+
+    .flex-container {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+
+        font-size: 18px;
+        font-weight: 700;
+    }
 }
 
 img {
-    height: 24px;
+    height: 28px;
     border-radius: 50%;
     background-color: rgb(3, 3, 3);
 }
 
 .login-button {
-    background-color: #ff7cbb;
+    background-color: 0;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 0;
     color: rgb(255, 255, 255);
-}
+    vertical-align: middle;
 
-.login-button:hover {
-    background-color: #fd68b0;
-    padding: 12px;
-    border-radius: 20px;
-    color: rgb(255, 255, 255);
-    cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
 }
 </style>

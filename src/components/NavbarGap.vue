@@ -10,6 +10,6 @@
 header {
     background-color: rgba(0, 0, 0, 1);
     width: 100%;
-    height: 80px;
+    height: 60px;
 }
 </style>

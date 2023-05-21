@@ -3,8 +3,8 @@
 
 <template>
     <div class="background-image">
-        <div class="bg">
-            <img src="../assets/images/Bg only lol.png">
+        <div class="girl-wrapper">
+            <img class="girl" src="../assets/images/No bg.png">
         </div>
     </div>
 </template>
@@ -17,25 +17,6 @@
     left: 0;
     width: 100%;
     height: 100vh;
-}
-
-.bg {
-    position: fixed; 
-    top: -50%; 
-    left: -50%; 
-    width: 200%; 
-    height: 200%;
-}
-.bg img {
-    z-index: -2;
-    position: absolute; 
-    top: 0; 
-    left: 0; 
-    right: 0; 
-    bottom: 0; 
-    margin: auto; 
-    min-width: 50%;
-    min-height: 50%;
 }
 
 @media (max-width: 1024px) {

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import YuccaImage from '@/components/YuccaImage.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const windowWidth = ref(window.innerWidth)
@@ -19,15 +20,15 @@ onUnmounted(() => {
 </script>
 
 <script lang="ts">
-import MainBackground from "../components/MainBackground.vue";
 
 export default {
-    components: { MainBackground }
+    components: { YuccaImage }
 }
 </script>
 
 <template>
-  <MainBackground/>
+  <YuccaImage/>
+
   <header v-if="windowWidth >= 1024">
     GREAT <br> 
     SINGAPORE <br> 
@@ -36,9 +37,14 @@ export default {
   <header v-else>
     GST5
   </header>
+  <div class="main-content">
+    <p>
+      jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus 
+    </p>
+  </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 
 @media (max-width: 1024px) {
   header {
@@ -64,6 +70,16 @@ export default {
 				  1px 1px 0 #000,
 				 1px -1px 0 #000,
 				-1px -1px 0 #000;
+  }
+
+  .main-content {
+    margin: 60px;
+    width: 600px;
+  }
+
+  p {
+    color: white;
+    font-size: 20px;
   }
 }
 </style>
