@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import type { UserInfo } from "@/Interfaces/user";
+import type { UserInfo } from "../Interfaces/user";
 import axios from 'axios';
 
 export default {

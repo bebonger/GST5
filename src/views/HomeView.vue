@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import YuccaImage from '@/components/YuccaImage.vue'
+import YuccaImage from '../components/YuccaImage.vue'
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const windowWidth = ref(window.innerWidth)

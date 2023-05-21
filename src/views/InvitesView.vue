@@ -1,8 +1,8 @@
 <script lang="ts">
-import TeamInvite from "@/components/TeamInvite.vue"
+import TeamInvite from "../components/TeamInvite.vue"
 import { inject }  from "vue"
-import type { UserInfo } from "@/Interfaces/user";
-import type { InviteInfo } from "@/Interfaces/team"
+import type { UserInfo } from "../Interfaces/user";
+import type { InviteInfo } from "../Interfaces/team"
 
 export default {
     data() {
@@ -42,16 +42,12 @@ export default {
 }
 </script>
 
-<script setup lang="ts">
-import { useUserDataStore } from "@/stores/userData";
-</script>
-
 <template>
 <div class="invites-wrapper">
   <h>Your Invites</h>
   <div v-if="invitesJSON.length > 0">
     <div v-for="invite in invitesJSON" :key="invite?.sender.osu.userID" class="invites-layout">
-      <TeamInvite :sender="(invite as InviteInfo).sender" @accept-invite="fetchData"/>
+      <TeamInvite :sender="invite.sender" @accept-invite="fetchData"/>
     </div>
   </div>
 </div>

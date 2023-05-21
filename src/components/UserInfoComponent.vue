@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import { useUserDataStore } from '@/stores/userData';
+import { useUserDataStore } from '../stores/userData';
 const userDataStore = useUserDataStore();
 
+</script>
+
+<script lang="ts">
+export default {
+    
+}
 </script>
 
 <template>

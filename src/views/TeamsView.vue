@@ -1,10 +1,10 @@
 <script setup lang="ts">
-  import { useUserDataStore } from "@/stores/userData"
+  import { useUserDataStore } from "../stores/userData"
   const userDataStore = useUserDataStore();
 </script>
 
 <script lang="ts">
-import PlayerDropdownSearch from "@/components/PlayerDropdownSearch.vue"
+import PlayerDropdownSearch from "../components/PlayerDropdownSearch.vue"
 import { inject }  from "vue"
 
 export default {

@@ -2,13 +2,13 @@
 import { RouterLink, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import UserInfo from './UserInfo.vue';
+import UserInfoComponent  from './UserInfoComponent.vue';
 </script>
 
 <script lang="ts">
 
 export default {
-    components: { UserInfo }
+    components: { UserInfoComponent }
 }
 </script>
 
@@ -20,7 +20,7 @@ export default {
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'invites'}">INVITES</RouterLink></li>
-                <li class="user-info"><UserInfo/></li>
+                <li class="user-info"><UserComponent/></li>
             </ul>
         </nav>
     </header>
@@ -28,7 +28,7 @@ export default {
 
 <style scoped lang="scss">
 header {
-    background-color: rgba(63, 155, 185, 0);
+    background-color: rgba(0, 0, 0, 0.6);
     z-index: 99;
     width: 100%;
     height: 60px;
@@ -41,6 +41,7 @@ header {
     border-bottom-style: solid;
     border-width: 1px;
     */
+    backdrop-filter: blur(30px);
 
     .navigation {
         width: 100%;
@@ -60,7 +61,7 @@ header {
 
         a.router-link-exact-active {
             color:white;
-            border-color:#141414;
+            border-color:white;
         }
 
     }
@@ -93,7 +94,7 @@ header {
 
     .link:hover {
         color: white;
-        border-color:#141414;
+        border-color:white;
         background-color: transparent;
     }
 }

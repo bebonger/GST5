@@ -10,8 +10,8 @@
 </template>
   
 <script setup lang="ts">
-import type { UserInfo } from "@/Interfaces/user";
-import InvitesView from "@/views/InvitesView.vue";
+import type { UserInfo } from "../Interfaces/user";
+import InvitesView from "../views/InvitesView.vue";
 import axios from 'axios';
 
 defineProps<{
