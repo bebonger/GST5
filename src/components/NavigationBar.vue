@@ -2,10 +2,10 @@
 import { RouterLink, useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
-import UserInfoComponent  from './UserInfoComponent.vue';
 </script>
 
 <script lang="ts">
+import UserInfoComponent from './UserInfoComponent.vue';
 
 export default {
     components: { UserInfoComponent }
@@ -20,7 +20,7 @@ export default {
                 <li><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'invites'}">INVITES</RouterLink></li>
-                <li class="user-info"><UserComponent/></li>
+                <li class="user-info"><UserInfoComponent/></li>
             </ul>
         </nav>
     </header>

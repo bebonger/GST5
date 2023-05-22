@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <div class="background-image">
+    <div class="girl-background">
         <div class="girl-wrapper">
             <img class="girl" src="../assets/images/No bg.png">
         </div>
@@ -10,7 +10,7 @@
 </template>
 
 <style scoped lang="scss">
-.background-image {
+.girl-background {
     position: fixed;
     position: fixed;
     top: 0;

@@ -6,14 +6,26 @@ const userDataStore = useUserDataStore();
 
 <script lang="ts">
 export default {
-    
+
 }
 </script>
 
 <template>
     <div class="user-info">
         <a v-if="!userDataStore.IsLoggedIn" class="login-button" href="/api/login/osu">LOGIN</a>
-        <div v-else-if="userDataStore.IsLoggedIn" class="flex-container"><img :src="userDataStore.user?.osu.avatar">{{userDataStore.user?.osu.username}}</div>
+        <div v-else-if="userDataStore.IsLoggedIn" class="flex-row">
+            <div class="avatar-container">
+                <img :src="userDataStore.user?.osu.avatar">
+            </div>
+            <div class="grid">
+                <div class="name-container">
+
+                </div>
+                <div class="button-container">
+
+                </div>
+            </div>
+        </div>
         <!--
         <a v-if ="!userDataStore.IsLoggedInDiscord && userDataStore.IsLoggedIn"  class="login-button" href="/api/login/discord">Discord Login</a>
         <div v-else-if="userDataStore.IsLoggedInDiscord"><img :src="userDataStore.user?.discord.avatar"><div>{{userDataStore.user?.discord.username}}</div></div>
@@ -23,6 +35,8 @@ export default {
 </template>
 
 <style scoped lang="scss">
+@import '../assets/main.css';
+
 header {
     background-color: rgba(0, 0, 0, 1);
     width: 100%;
@@ -36,21 +50,30 @@ header {
     gap: 10px;
     line-height: auto;
 
-    .flex-container {
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-        align-items: center;
+    .avatar-container {
+        z-index: 2;
+        display: block;
+        margin: 0 auto;
+        aspect-ratio : 1 / 1;
+        height: 100%;
+        transform: rotate(45deg);
+        overflow: hidden;
+        background-color: rgb(46, 46, 46);
+        border: 2px solid #F49089;
 
-        font-size: 18px;
-        font-weight: 700;
+        img {
+            max-width: 100%;
+            transform: rotate(-45deg) scale(1.42);
+        }
     }
-}
 
-img {
-    height: 28px;
-    border-radius: 50%;
-    background-color: rgb(3, 3, 3);
+    .name-container {
+        margin: 0 -20px;
+        width:150px;
+        height: auto;
+        background-color: #F49089;
+        grid-row: 1;
+    }
 }
 
 .login-button {
