@@ -32,16 +32,18 @@ export default {
   <header v-if="windowWidth >= 1024">
     GREAT <br> 
     SINGAPORE <br> 
-    TOURNAMENT 5
+    TOURNAMENT
   </header>
   <header v-else>
-    GST5
+    GST
   </header>
+  <!--
   <div class="main-content">
     <p>
       jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus jingus bingus 
     </p>
   </div>
+  -->
 </template>
 
 <style scoped lang="scss">
@@ -52,24 +54,27 @@ export default {
     color: white;
     font-weight: 600;
     text-align: center;
-    text-shadow: -1px 1px 0 #000,
-				  1px 1px 0 #000,
-				 1px -1px 0 #000,
-				-1px -1px 0 #000;
+    //text-shadow: -1px 1px 0 #000,
+		//		  1px 1px 0 #000,
+		//		 1px -1px 0 #000,
+		//		-1px -1px 0 #000;
   }
 }
 
 @media (min-width: 1024px) {
   header {
-    margin: 40px 60px;
+    // margin: 40px 60px;
+    position:fixed;
+    left: 30px;
+    bottom: 100px;
     font-size: 100px;
     color: white;
     font-weight: 600;
-    line-height: 100px;
-    text-shadow: -1px 1px 0 #000,
-				  1px 1px 0 #000,
-				 1px -1px 0 #000,
-				-1px -1px 0 #000;
+    line-height: 80px;
+    // text-shadow: -1px 1px 0 #000,
+		// 		  1px 1px 0 #000,
+		// 		 1px -1px 0 #000,
+		// 		-1px -1px 0 #000;
   }
 
   .main-content {

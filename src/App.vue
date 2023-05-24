@@ -85,7 +85,7 @@ nav a:first-of-type {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity or color as needed */
+  background-color: rgba(0, 0, 0, 0.7); /* Adjust the opacity or color as needed */
   z-index: 0;
   pointer-events: none; /* Prevent the overlay from capturing mouse events */
   opacity: 0;

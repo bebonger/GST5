@@ -31,11 +31,12 @@ header {
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 99;
     width: 100%;
-    height: 60px;
+    height: 85px;
     position: fixed;
     transition: 0.5s ease all;
     color: #fff;
     padding: 0px;
+    overflow: hidden;
     /*
     border-color: white;
     border-bottom-style: solid;
@@ -86,9 +87,10 @@ header {
     }
 
     .link {
-        font-size: 18px;
+        letter-spacing: 3px;
+        font-size: 16px;
         transition: .5s ease all;
-        padding: 4px;
+        padding: 10px 16px;
         border-bottom: 2px solid transparent;
     }
 
