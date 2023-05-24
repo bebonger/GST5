@@ -4,7 +4,7 @@
 <template>
     <div class="girl-background">
         <div class="girl-wrapper">
-            <img class="girl" src="../assets/images/No bg.png">
+            <img class="girl" src="../assets/images/Yucca.png">
         </div>
     </div>
 </template>

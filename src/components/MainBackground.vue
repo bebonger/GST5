@@ -4,7 +4,7 @@
 <template>
     <div class="background-image">
         <div class="bg">
-            <img src="../assets/images/Bg only lol.png">
+            <img src="../assets/images/BG.png">
         </div>
     </div>
 </template>
