@@ -94,11 +94,11 @@ defineProps<{
             </div>
             <div class="players flex flex-row flex-wrap px-8 py-4">
                 <div class="flex flex-row grow gap-2">
-                    <a href="">
+                    <a :href="`https://osu.ppy.sh/u/${team.player1?.osu.userID}`">
                         <img :src="team.player1?.osu.avatar"/>
                     </a>  
                     <div class="flex flex-col h-full">
-                        <a href="">
+                        <a :href="`https://osu.ppy.sh/u/${team.player1?.osu.userID}`">
                             <h2 class="truncate">{{team.player1?.osu.username}}</h2>
                         </a>
                         <div class="flex flex-row gap-2 items-start justify-start">
@@ -108,11 +108,11 @@ defineProps<{
                     </div>
                 </div>
                 <div class="flex flex-row grow gap-2">
-                    <a href="">
+                    <a :href="`https://osu.ppy.sh/u/${team.player2?.osu.userID}`">
                         <img :src="team.player2?.osu.avatar"/>
                     </a>  
                     <div class="flex flex-col h-full">
-                        <a href="">
+                        <a :href="`https://osu.ppy.sh/u/${team.player2?.osu.userID}`">
                             <h2 class="truncate">{{team.player2?.osu.username}}</h2>
                         </a>
                         <div class="flex flex-row gap-2 items-start justify-start">
