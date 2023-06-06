@@ -144,16 +144,6 @@ export default {
             </div>
             <div v-for="invite in invitesJSON" :key="invite?.sender.osu.userID" class="invite-container flex flex-col w-full h-full overflow-auto gap-4 rounded-lg">
                 <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
-                <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
             </div>
         </div>
     </div>

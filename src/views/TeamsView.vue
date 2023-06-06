@@ -67,7 +67,7 @@ export default {
   <div v-if="!loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
   <main v-else class="max-w-5xl h-full w-full pt-8 mx-auto">
     <div class="flex flex-col gap-10 pb-6">
-      <div class="flex flex-col w-full justify-center items-center mx-auto gap-4">
+      <div v-if="myTeam.player1" class="flex flex-col w-full justify-center items-center mx-auto gap-4">
         <h1 class="page-title">Your Team</h1>
         <div class="flex flex-row gap-4">
         </div>
