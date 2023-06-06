@@ -12,4 +12,10 @@ header {
     width: 100%;
     height: 85px;
 }
+
+@media (max-width: 64rem) {
+    header {
+        height: 60px;
+    }
+}
 </style>

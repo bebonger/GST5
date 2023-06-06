@@ -9,13 +9,13 @@ export const useUserDataStore = defineStore('userData', ({
     }),
     getters: {
         Loading: (state) => {
-            return !state.loaded
+            return !state.loaded;
         },
         IsLoggedIn: (state) => {
-            return !!state.user?.osu
+            return !!state.user?.osu;
         },
         IsLoggedInDiscord: (state) => {
-            return !!state.user?.discord?.userID
+            return !!state.user?.discord?.userID;
         }
     },
     actions: {

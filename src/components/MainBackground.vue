@@ -27,6 +27,7 @@
     height: 200%;
 }
 .bg img {
+    object-fit: cover;
     z-index: -2;
     position: absolute; 
     top: 0; 
@@ -38,7 +39,7 @@
     min-height: 50%;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
 
     .girl-wrapper {
         position: absolute;
@@ -60,7 +61,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
     .girl-wrapper {
         position: absolute;
         top: 80px;

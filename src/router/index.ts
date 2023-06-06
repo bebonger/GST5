@@ -22,12 +22,7 @@ const router = createRouter({
       name: 'teams',
       component: () => import('../views/TeamsView.vue')
     },
-    {
-      path: '/invites',
-      name: 'invites',
-      component: () => import('../views/InvitesView.vue')
-    }
   ]
 })
 
-export default router
+export default router;

@@ -16,7 +16,7 @@
   font-family: Din;
   src: url("./fonts/DIN-2014_Bold.woff") format('woff');
   font-style: normal;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 @font-face {
@@ -26,7 +26,24 @@
   font-weight: 300;
 }
 
-a,
+@font-face {
+  font-family: Din;
+  src: url("./fonts/DIN-2014_BoldItalic.woff") format('woff');
+  font-style: italic;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Din;
+  src: url("./fonts/DIN-2014_DemiBold.woff") format('woff');
+  font-style: normal;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+}
+
 .green {
   text-decoration: none;
   color: hsla(160, 100%, 37%, 1);
@@ -35,78 +52,71 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
+    background-color: hsla(0, 0%, 67%, 0.2);
   }
   
 }
 
-.flex {
-  display: flex;
+.opacity-0 {
+  opacity: 0;
 }
 
-.flex-row {
-  display: flex;
-  flex-direction: row;
+.opacity-1 {
+  opacity: 1;
 }
 
-.flex-column {
-  display: flex;
-  flex-direction: column;
+.overflow-h {
+  overflow: hidden;
 }
 
-.justify-start {
-  justify-content: flex-start;
+.overflow-auto {
+  overflow: auto;
 }
 
-.items-start {
-  align-items: flex-start;
+.p-absolute {
+  position: absolute;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
+.p-fixed {
+  position: fixed;
 }
 
-.items-center {
-  align-items: center;
+.p-relative {
+  position: relative;
 }
 
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
+
+
+/******************* Transitions *******************/
+
+
+.transition-\.5 {
+  transition: 0.5s ease all;
 }
 
-.h-full {
-  height: 100%;
-}
+/******************* Loader *******************/
 
-.w-full {
-  width: 100%;
+.lds-dual-ring {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
 }
-
-.h-12 {
-  height: 3rem;
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
 }
-
-.rounded-lg {
-  border-radius: .5rem;
-}
-
-.gap-2 {
-  gap: .5rem;
-}
-
-.p-2 {
-  padding: .5rem;
-}
-
-.flex-grow, .grow {
-  flex-grow: 1;
-}
-
-.grid {
-  display: grid;
-}
-
-.xl\:basis-1\/4 {
-  flex-basis: 25%;
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

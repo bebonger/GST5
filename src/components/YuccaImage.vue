@@ -19,7 +19,11 @@
     height: 100vh;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 64rem) {
+
+    img {
+        object-fit: cover;
+    }
 
     .girl-wrapper {
         position: absolute;
@@ -41,7 +45,7 @@
     }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 64rem) {
     .girl-wrapper {
         position: absolute;
         top: 80px;

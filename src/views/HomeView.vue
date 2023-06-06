@@ -29,14 +29,18 @@ export default {
 <template>
   <YuccaImage/>
 
-  <header v-if="windowWidth >= 1024">
+  <header id="desktop-header">
     GREAT <br> 
     SINGAPORE <br> 
     TOURNAMENT
   </header>
-  <header v-else>
+  <header id="mobile-header">
     GST
   </header>
+
+  <div class="p-fixed">
+  </div>
+
   <!--
   <div class="main-content">
     <p>
@@ -48,8 +52,13 @@ export default {
 
 <style scoped lang="scss">
 
-@media (max-width: 1024px) {
-  header {
+@media (max-width: 64rem) {
+  #desktop-header {
+    display: none;
+  }
+
+  #mobile-header {
+    display: block;
     font-size: 160px;
     color: white;
     font-weight: 600;
@@ -61,9 +70,15 @@ export default {
   }
 }
 
-@media (min-width: 1024px) {
-  header {
+@media (min-width: 64rem) {
+
+  #mobile-header {
+    display: none;
+  }
+
+  #desktop-header {
     // margin: 40px 60px;
+    display:block;
     position:fixed;
     left: 30px;
     bottom: 100px;

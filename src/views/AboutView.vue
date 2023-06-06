@@ -1,6 +1,78 @@
 <template>
-  <main class="info mx-auto h-full w-full">
+  <main class="info max-w-5xl h-full w-full mx-auto">
     <section class="info-container">
+
+      <div class="info-header">
+        <h1>SCHEDULES</h1>
+        <p>All times are in UTC+08.</p>
+      </div>
+      <div class="info-content">
+        <ol>
+          <li>
+            <h1>Registration Period</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Screening</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Group Stage</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Round of 16</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Quarterfinals</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Semifinals</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Finals</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+          <li>
+            <h1>Grand Finals</h1>
+            <p>XX XXXXX - XX XXXXX</p>
+          </li>
+        </ol>
+      </div>
+
+      <div class="info-header">
+        <h1>PRIZES</h1>
+        <p>MONEY MONEY MONEY MONEY</p>
+      </div>
+      <div class="info-content">
+        <div>
+          <h1>1ST PLACE</h1>
+          <ol>
+            <li>Unique Profile Badge</li>
+            <li>Physical Medal</li>
+            <li>Trophy Plaque</li>
+            <li>money? idk</li>
+          </ol>
+        </div>
+        <div>
+          <h1>2ND PLACE</h1>
+          <ol>
+            <li>Physical Medal</li>
+            <li>money? idk</li>
+          </ol>
+        </div>
+        <div>
+          <h1>3RD PLACE</h1>
+          <ol>
+            <li>Physical Medal</li>
+            <li>money? idk</li>
+          </ol>
+        </div>
+      </div>
+
       <div class="info-header">
         <h1>RULES & INFORMATION</h1>
         <p>We reserve the right to change any of the following information without advanced notice. 
@@ -26,7 +98,7 @@
             <li>
               To register,
               <ol>
-                <li>Join the Discord.</li>
+                <li>Join the <a href="https://discord.gg/BphK7ym4">Discord</a>.</li>
                 <li>Change your nickname in the server to your in-game name.</li>
                 <li>Signup on the website.</li>
               </ol>
@@ -124,7 +196,6 @@
           <ol>
             <li>Matches will be <b>best of 13</b> (first to 7). </li>
             <li>The mappool structure is 6 NM / 3 HD / 3 HR / 4 DT / 3 FM / TB.</li>
-            <li>+ add seeding rules &#128128;&#128128;&#128128;&#128128;</li>
           </ol>
         </div>
         <div>
@@ -132,78 +203,6 @@
           <ol>
             <li>Matches will be <b>best of 13</b> (first to 7). </li>
             <li>The mappool structure is 6 NM / 3 HD / 3 HR / 4 DT / 3 FM / TB.</li>
-            <li>+ add seeding rules &#128128;&#128128;&#128128;&#128128;</li>
-          </ol>
-        </div>
-      </div>
-
-      <div class="info-header">
-        <h1>SCHEDULES</h1>
-        <p>All times are in UTC+08.</p>
-      </div>
-      <div class="info-content">
-        <ol>
-          <li>
-            <h1>Registration Period</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Screening</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Group Stage</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Round of 16</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Quarterfinals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Semifinals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Finals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-          <li>
-            <h1>Grand Finals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
-          </li>
-        </ol>
-      </div>
-
-      <div class="info-header">
-        <h1>PRIZES</h1>
-        <p>MONEY MONEY MONEY MONEY</p>
-      </div>
-      <div class="info-content">
-        <div>
-          <h1>1ST PLACE</h1>
-          <ol>
-            <li>Unique Profile Badge</li>
-            <li>Physical Medal</li>
-            <li>Trophy Plaque</li>
-            <li>money? idk</li>
-          </ol>
-        </div>
-        <div>
-          <h1>2ND PLACE</h1>
-          <ol>
-            <li>Physical Medal</li>
-            <li>money? idk</li>
-          </ol>
-        </div>
-        <div>
-          <h1>3RD PLACE</h1>
-          <ol>
-            <li>Physical Medal</li>
-            <li>money? idk</li>
           </ol>
         </div>
       </div>
@@ -216,13 +215,13 @@
         <div>
           <h1>Hosts</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/8301957" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8301957" class="h-12 rounded-lg" loading="lazy">
                 <p>_gt</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
                 <p>Demonical</p>
@@ -233,76 +232,70 @@
         <div>
           <h1>Custom Mappers</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/10646707" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/10646707" class="h-12 rounded-lg" loading="lazy">
-                <p>Ralkinson</p>
-              </a>
-            </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/4561368" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/4561368" class="h-12 rounded-lg" loading="lazy">
                 <p>Anxient</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/9074780" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/9074780" class="h-12 rounded-lg" loading="lazy">
-                <p>atlas</p>
-              </a>
-            </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/8640970" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8640970" class="h-12 rounded-lg" loading="lazy">
                 <p>enri</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/12704035" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/12704035" class="h-12 rounded-lg" loading="lazy">
                 <p>Fsjallink</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/9487458" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/9487458" class="h-12 rounded-lg" loading="lazy">
-                <p>Mocaotic</p>
+            <li class="flex basis-1/4">
+              <a href="https://osu.ppy.sh/u/2123087" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/2123087" class="h-12 rounded-lg" loading="lazy">
+                <p>hehe</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/5875419" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/5875419" class="h-12 rounded-lg" loading="lazy">
-                <p>newton-</p>
-              </a>
-            </li>
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/9162649" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/9162649" class="h-12 rounded-lg" loading="lazy">
-                <p>Slyze-</p>
-              </a>
-            </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/7117621" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/7117621" class="h-12 rounded-lg" loading="lazy">
                 <p>Mimiliaa</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
+              <a href="https://osu.ppy.sh/u/9487458" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/9487458" class="h-12 rounded-lg" loading="lazy">
+                <p>Mocaotic</p>
+              </a>
+            </li>
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/12366071" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/12366071" class="h-12 rounded-lg" loading="lazy">
                 <p>nanoya</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
+              <a href="https://osu.ppy.sh/u/5875419" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/5875419" class="h-12 rounded-lg" loading="lazy">
+                <p>newton-</p>
+              </a>
+            </li>
+            <li class="flex basis-1/4">
+              <a href="https://osu.ppy.sh/u/10646707" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/10646707" class="h-12 rounded-lg" loading="lazy">
+                <p>Ralkinson</p>
+              </a>
+            </li>
+            <li class="flex basis-1/4">
+              <a href="https://osu.ppy.sh/u/9162649" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/9162649" class="h-12 rounded-lg" loading="lazy">
+                <p>Slyze-</p>
+              </a>
+            </li>
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/8953955" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8953955" class="h-12 rounded-lg" loading="lazy">
                 <p>Zelq</p>
-              </a>
-            </li>
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/2123087" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/2123087" class="h-12 rounded-lg" loading="lazy">
-                <p>hehe</p>
               </a>
             </li>
           </ul>
@@ -310,7 +303,7 @@
         <div>
           <h1>Developer</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
                 <p>Demonical</p>
@@ -321,13 +314,13 @@
         <div>
           <h1>Playtesters</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/10549880" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/10549880" class="h-12 rounded-lg" loading="lazy">
                 <p>ninerik</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/7587763" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/7587763" class="h-12 rounded-lg" loading="lazy">
                 <p>magnatagamer123</p>
@@ -338,19 +331,19 @@
         <div>
           <h1>GFX Artist</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/8244635" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8244635" class="h-12 rounded-lg" loading="lazy">
                 <p>Hecatia</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/16551387" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/16551387" class="h-12 rounded-lg" loading="lazy">
                 <p>[K]</p>
               </a>
             </li>
-            <li class="flex xl:basis-1/4">
+            <li class="flex basis-1/4">
               <a href="https://osu.ppy.sh/u/1997719" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/1997719" class="h-12 rounded-lg" loading="lazy">
                 <p>kaetwo</p>
@@ -373,7 +366,6 @@
 @import '../assets/main.css';
 
 .info {
-  max-width: 72rem;
   padding-bottom: 1.5rem;
 
   .info-container {
@@ -400,7 +392,7 @@
 
   .info-header {
     padding: 1rem;
-    background-color: rgb(81 73 124 / var(--tw-bg-opacity));
+    background-color: rgb(244, 144, 137, var(--tw-bg-opacity));
     --tw-bg-opacity: .4;
   }
 
@@ -446,6 +438,10 @@
     }
 
     a {
+
+      color:aqua;
+      transition: 0.4s;
+
       &:hover {
         background-color:rgba(128, 128, 128, 0.2);
       }
@@ -454,7 +450,7 @@
   }
 }
 
-@media (min-width: 72rem) {
+@media (min-width: 64rem) {
   .info {
     padding-top: 1.5rem;
   }
