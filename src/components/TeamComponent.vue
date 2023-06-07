@@ -23,8 +23,8 @@ export default {
     },
     methods: {
         isClientTeam() {
-            return true;
-            // return useUserDataStore().user?.osu.userID == this.team.player1?.osu.userID || useUserDataStore().user?.osu.userID == this.team.player2?.osu.userID;
+            // return true;
+            return useUserDataStore().user?.osu.userID == this.team.player1?.osu.userID || useUserDataStore().user?.osu.userID == this.team.player2?.osu.userID;
         },
         StartEditName() {
             this.editing = true;
