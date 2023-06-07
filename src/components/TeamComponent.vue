@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { TeamInfo } from '@/Interfaces/team';
 import { useUserDataStore } from '@/stores/userData';
-import { readFileSync } from 'fs';
 defineProps<{
     team: TeamInfo
 }>();
