@@ -1,18 +1,74 @@
 <script setup lang="ts">
 import type { TeamInfo } from '@/Interfaces/team';
+import { useUserDataStore } from '@/stores/userData';
+import { readFileSync } from 'fs';
 defineProps<{
     team: TeamInfo
 }>();
 </script>
 
 <script lang="ts">
+export default {
+    data() {
+        return {
+            editing: false,
+            teamName: ""
+        }
+    },
+    methods: {
+        isClientTeam() {
+            return useUserDataStore().user?.osu.userID == this.team.player1?.osu.userID || useUserDataStore().user?.osu.userID == this.team.player2?.osu.userID;
+        },
+        StartEditName() {
+            this.editing = true;
+            this.teamName = this.team.name;
+        },
+        async EndEditName() {
+            this.editing = false;
+            const response = await this.$http.post('/api/teams/edit/name', { 'name': this.teamName });
+
+            if (response.data.error) {
+                this.$toast.error(response.data.error);
+            } else if (response.data.success) {
+                this.$toast.success(response.data.success);
+                this.$emit("onEdit");
+            }
+        },
+        CancelEditName() {
+            this.editing = false;
+        },
+        SelectFiles: function() {
+            document.getElementById("fileUpload").click();
+        },
+        async OnFileSelected(event) {
+            const file = event.target.files[0];
+            const formData = new FormData();
+            formData.append('image', file);
+
+            const response = await this.$http.post('/api/teams/edit/banner', formData,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
+
+            if (response.data.error) {
+                this.$toast.error(response.data.error);
+            } else if (response.data.success) {
+                this.$toast.success(response.data.success);
+                this.$emit("onEdit");
+            }
+        }
+    }
+}
+
 </script>
 
 <template>
     <div class="team max-w-md w-full truncate">
         <div class="team flex flex-col">
             <div class="team-image truncate h-24">
-                <div class="image-overlay">
+                <div class="z-20 image-overlay">
                     <svg class="gst-svg" width="403" height="55" viewBox="0 0 403 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.33">
                         <path d="M19.8867 26.4562V14.5764L37.4044 14.5764V17.0091H26.3335V24.0235H31.503V21.4489H28.6648V19.523H37.4024V26.4562H19.8867Z" fill="white"/>
@@ -82,12 +138,40 @@ defineProps<{
                         </g>
                     </svg>
                 </div>
+
+                <button v-if="isClientTeam()" @click="SelectFiles" class="z-10 absolute h-full w-full transition-all bg-opacity-40 bg-black hover:bg-opacity-60 hover:bg-pink-p">
+                    <div class="flex flex-row gap-4 justify-center items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white"><path d="M6 20q-.825 0-1.412-.587Q4 18.825 4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413Q18.825 20 18 20Zm5-4V7.85l-2.6 2.6L7 9l5-5 5 5-1.4 1.45-2.6-2.6V16Z"></path></svg>
+                        <p>Change Banner</p>
+                    </div>
+                    <input id="fileUpload" type="file" accept=".png,.jpg,.jpeg,.gif" @change="OnFileSelected" hidden>
+                </button>
+
                 <img v-if="team.avatar" class="bg-cover bg-center" :src="team.avatar"/>
                 <img v-else class="bg-cover bg-center" src="../assets/images/BG.png"/>
             </div>
             <div class="flex flex-col px-8 py-2 gap-2">
-                <h1>{{ team.name }}</h1>
-                <div class="ml-auto flex flex-row gap-2 items-center">
+                <div v-if="!editing" class="flex flex-row gap-2 items-start">
+                    <h1>{{ team.name }}</h1>
+                    <button v-if="isClientTeam()" @click="StartEditName">
+                        <svg viewBox="189.115 144.808 122.881 121.495" width="18" height="18">
+                            <path d="M 217.775 146.433 L 247.995 146.433 L 233.575 161.503 L 217.775 161.503 C 214.173 161.505 210.722 162.945 208.185 165.503 C 205.628 168.039 204.188 171.491 204.185 175.093 L 204.185 251.233 L 280.325 251.233 C 283.928 251.232 287.38 249.792 289.915 247.233 C 292.475 244.698 293.915 241.245 293.915 237.643 L 293.915 222.093 L 308.985 206.353 L 308.985 237.643 C 308.976 245.232 305.95 252.505 300.575 257.863 L 300.575 257.913 C 295.221 263.277 287.955 266.295 280.375 266.303 L 200.615 266.303 C 197.575 266.297 194.662 265.085 192.515 262.933 C 190.347 260.778 189.124 257.85 189.115 254.793 L 189.115 175.093 C 189.125 167.507 192.151 160.236 197.525 154.883 L 197.575 154.793 C 202.928 149.425 210.194 146.403 217.775 146.393 L 217.775 146.433 Z M 262.115 221.263 L 232.695 227.263 L 236.945 195.953 L 262.115 221.263 Z M 246.245 186.473 L 285.415 145.703 C 286.281 144.753 287.691 144.532 288.805 145.173 L 311.285 166.933 C 312.305 167.939 312.216 169.61 311.095 170.503 L 271.395 211.793 L 246.245 186.473 Z" style="fill: rgb(255, 255, 255);"></path>
+                        </svg>                    
+                    </button>
+                </div>
+                <div v-else class="flex flex-col mt-4">
+                    <p class="text-sm" style="color:#849591;">Enter new team name</p>
+                    <div class="flex flex-row gap-2 items-center">
+                        <input type="text" v-model="teamName" v-on:keyup.enter="EndEditName"/>
+                        <button @click="EndEditName" class="submit-button transition-all">
+                            <p>SUBMIT</p>
+                        </button>
+                        <button @click="CancelEditName" class="cancel-button transition-all">
+                            <p>CANCEL</p>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex flex-row gap-2 items-center justify-end">
                     <p class="text-xs" style="color: #849591;">AVG. BWS</p>
                     <p class="text-2xl font-bold italic">#{{ Math.round((team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2)) + team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) * 0.5 ) }}</p>
                 </div>
@@ -128,6 +212,70 @@ defineProps<{
 
 <style scoped lang="scss">
 .team {
+
+    .submit-button {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: transparent;
+        border: 1px solid #849591;
+        border-radius: 3px;
+        color:#849591;
+        font-weight: 500;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #849591;
+            color: white;
+        }
+    }
+
+    .cancel-button {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: transparent;
+        border: 1px solid #F49089;
+        border-radius: 3px;
+        color:#F49089;
+        font-weight: 500;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #F49089;
+            color: white;
+        }
+    }
+
+
+    input {
+        color: black;
+        height: 35px;
+        width: 200px;
+        padding: 8px;
+        background-color: transparent;
+        border: 1px solid white;
+        border-radius: 3px;
+        caret-color: white;
+        color: white;
+        font-family: DIN;
+        &:focus {
+            outline: none;
+        }
+    }
+
     a {
         &:hover {
             background-color: transparent;
@@ -141,6 +289,7 @@ defineProps<{
         font-weight: 700;
         font-style: italic;
         font-size: 1.5rem;
+        line-height: 35px;
     }
 
     h2 {
@@ -167,7 +316,6 @@ defineProps<{
             height: 24rem;
             aspect-ratio: 1/1;
             background-color: #849591;
-            z-index: 1;
             transform: rotate(-45deg);
             bottom: 0px;
             right: -230px;

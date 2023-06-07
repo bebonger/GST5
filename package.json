@@ -22,6 +22,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "autoprefixer": "^10",
     "axios": "^1.4.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "izitoast": "^1.4.0",
     "pinia": "^2.0.32",
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",
+    "@types/cors": "^2.8.13",
     "@types/jsdom": "^21.1.0",
     "@types/node": "^18.14.2",
     "@vitejs/plugin-vue": "^4.0.0",

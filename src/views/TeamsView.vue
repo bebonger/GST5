@@ -46,11 +46,16 @@ export default {
           }
       },
       parseData(data: TeamInfo[]) {
-        data.forEach((team) => {
-          if (team.player1.osu.userID == useUserDataStore().user?.osu.userID || 
-            team.player2.osu.userID == useUserDataStore().user?.osu.userID) {
-              this.myTeam = team;
-            }
+        
+        data = data.filter((team) => {
+          if (
+            team.player1.osu.userID === useUserDataStore().user?.osu.userID ||
+            team.player2.osu.userID === useUserDataStore().user?.osu.userID
+          ) {
+            this.myTeam = team;
+            return false; // Exclude the matching team from the filtered array
+          }
+          return true; // Keep all other teams in the filtered array
         });
 
         console.log(this.myTeam.player1);
@@ -71,7 +76,7 @@ export default {
         <h1 class="page-title">Your Team</h1>
         <div class="flex flex-row gap-4">
         </div>
-        <TeamComponent :team="myTeam"/>
+        <TeamComponent :team="myTeam" @on-edit="fetchData"/>
       </div>
 
       <h1 class="page-title">Teams</h1>
