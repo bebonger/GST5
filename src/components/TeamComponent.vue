@@ -6,7 +6,14 @@ defineProps<{
 }>();
 </script>
 
+
 <script lang="ts">
+
+interface HTMLInputEvent extends Event {
+  target: HTMLInputElement & EventTarget
+}
+
+
 export default {
     data() {
         return {
@@ -16,7 +23,8 @@ export default {
     },
     methods: {
         isClientTeam() {
-            return useUserDataStore().user?.osu.userID == this.team.player1?.osu.userID || useUserDataStore().user?.osu.userID == this.team.player2?.osu.userID;
+            return true;
+            // return useUserDataStore().user?.osu.userID == this.team.player1?.osu.userID || useUserDataStore().user?.osu.userID == this.team.player2?.osu.userID;
         },
         StartEditName() {
             this.editing = true;
@@ -37,10 +45,13 @@ export default {
             this.editing = false;
         },
         SelectFiles: function() {
-            document.getElementById("fileUpload").click();
+            let element = document.getElementById("fileUpload");
+            if (element) element.click();
         },
-        async OnFileSelected(event) {
-            const file = event.target.files[0];
+        async OnFileSelected(event: any) {
+            if (!event.target.files) return;
+
+            const file = event.target?.files[0];
             const formData = new FormData();
             formData.append('image', file);
 
