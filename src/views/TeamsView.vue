@@ -40,7 +40,7 @@ export default {
           try {
               const response = await this.$http.get("/api/teams");
               this.teamsJSON = response.data;
-              window.setTimeout(this.parseData(this.teamsJSON));
+              window.setTimeout(this.parseData(this.teamsJSON), 100);
           }
           catch (err) {
               console.error(err);
