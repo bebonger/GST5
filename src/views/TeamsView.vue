@@ -40,15 +40,15 @@ export default {
           try {
               const response = await this.$http.get("/api/teams");
               this.teamsJSON = response.data;
-              window.setTimeout(this.parseData(this.teamsJSON), 100);
+              window.setTimeout(this.parseData, 100);
           }
           catch (err) {
               console.error(err);
           }
       },
-      parseData(data: TeamInfo[]) {
+      parseData() {
         
-        data = data.filter((team) => {
+        this.teamsJSON = this.teamsJSON.filter((team) => {
           if (
             team.player1.osu.userID === useUserDataStore().user?.osu.userID ||
             team.player2.osu.userID === useUserDataStore().user?.osu.userID
@@ -60,8 +60,6 @@ export default {
         });
 
         console.log(this.myTeam.player1);
-
-        this.teamsJSON = data;
         this.loaded = true;
       }
     },
