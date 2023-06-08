@@ -1,5 +1,5 @@
 <template>
-    <div v-if="sender" class="invite-card flex flex-column items-start gap-2">
+    <div v-if="sender" class="invite-card flex flex-col items-start gap-2">
         <h1>TEAM INVITE</h1>
             <div class="flex flex-row gap-4 items-center w-full">
                 <img :src="sender.osu.avatar" class="avatar">
