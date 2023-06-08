@@ -21,7 +21,7 @@ export default {
     created() {
         // watch the params of the route to fetch the data again
         this.$watch(() => this.$route.params, () => {
-            this.checkUser();
+            this.fetchData();
         }, 
         // fetch the data when the view is created and the data is
         // already being observed
@@ -39,7 +39,8 @@ export default {
           this.error = this.post = null;
           try {
               const response = await this.$http.get("/api/teams");
-              this.parseData(response.data);
+              this.teamsJSON = response.data;
+              window.setTimeout(this.parseData(this.teamsJSON));
           }
           catch (err) {
               console.error(err);
