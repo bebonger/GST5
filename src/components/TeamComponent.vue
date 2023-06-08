@@ -77,7 +77,7 @@ export default {
 <template>
     <div class="team max-w-md w-full truncate">
         <div class="team flex flex-col">
-            <div class="team-image truncate h-24">
+            <div class="team-image truncate h-24 flex">
                 <div class="z-20 image-overlay">
                     <svg class="gst-svg" width="403" height="55" viewBox="0 0 403 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.33">
@@ -157,8 +157,8 @@ export default {
                     <input id="fileUpload" type="file" accept=".png,.jpg,.jpeg,.gif" @change="OnFileSelected" hidden>
                 </button>
 
-                <img v-if="team.avatar" class="bg-cover bg-center" :src="team.avatar"/>
-                <img v-else class="bg-cover bg-center" src="../assets/images/BG.png"/>
+                <img v-if="team.avatar" class="flex-1 object-cover" :src="team.avatar"/>
+                <img v-else class="flex-1 object-cover" src="../assets/images/BG.png"/>
             </div>
             <div class="flex flex-col px-8 py-2 gap-2">
                 <div v-if="!editing" class="flex flex-row gap-2 items-start">
