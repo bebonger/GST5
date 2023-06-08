@@ -40,6 +40,7 @@ export default {
           try {
               const response = await this.$http.get("/api/teams");
               this.teamsJSON = response.data;
+              this.loaded = true;
               window.setTimeout(this.parseData, 100);
           }
           catch (err) {
@@ -47,7 +48,8 @@ export default {
           }
       },
       parseData() {
-        
+        if (!useUserDataStore().IsLoggedIn) return;
+
         this.teamsJSON = this.teamsJSON.filter((team) => {
           if (
             team.player1.osu.userID === useUserDataStore().user?.osu.userID ||
@@ -58,9 +60,6 @@ export default {
           }
           return true; // Keep all other teams in the filtered array
         });
-
-        console.log(this.myTeam.player1);
-        this.loaded = true;
       }
     },
     components: { TeamComponent }
@@ -79,8 +78,8 @@ export default {
       </div>
 
       <h1 class="page-title">Teams</h1>
-      <div v-for="team in teamsJSON" :key="team.name" class="flex flex-wrap justify-center gap-4">
-        <TeamComponent :team="team"/>
+      <div class="flex flex-wrap justify-center gap-4">
+        <TeamComponent v-for="team in teamsJSON" :key="team.name" :team="team"/>
       </div>
     </div>
   </main>

@@ -10,35 +10,39 @@
         <ol>
           <li>
             <h1>Registration Period</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>10 June - 25 June</p>
           </li>
           <li>
             <h1>Screening</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>25 June - 8 July (Tentative)</p>
+          </li>
+          <li>
+            <h1>Group Stage Draw</h1>
+            <p>8 July</p>
           </li>
           <li>
             <h1>Group Stage</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>15 July - 23 July</p>
           </li>
           <li>
             <h1>Round of 16</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>29 July - 30 July</p>
           </li>
           <li>
             <h1>Quarterfinals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>5 August - 6 August</p>
           </li>
           <li>
             <h1>Semifinals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>12 August - 13 August</p>
           </li>
           <li>
             <h1>Finals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>19 August - 20 August</p>
           </li>
           <li>
             <h1>Grand Finals</h1>
-            <p>XX XXXXX - XX XXXXX</p>
+            <p>26 August - 27 August</p>
           </li>
         </ol>
       </div>
@@ -98,7 +102,7 @@
             <li>
               To register,
               <ol>
-                <li>Join the <a href="https://discord.gg/BphK7ym4">Discord</a>.</li>
+                <li>Join the <a href="https://discord.gg/DEYspsAjsd">Discord</a>.</li>
                 <li>Change your nickname in the server to your in-game name.</li>
                 <li>Signup on the website.</li>
               </ol>
@@ -324,6 +328,12 @@
               <a href="https://osu.ppy.sh/u/7587763" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/7587763" class="h-12 rounded-lg" loading="lazy">
                 <p>magnatagamer123</p>
+              </a>
+            </li>
+            <li class="flex basis-1/4">
+              <a href="https://osu.ppy.sh/u/10722794" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/10722794" class="h-12 rounded-lg" loading="lazy">
+                <p>Inquisitives</p>
               </a>
             </li>
           </ul>
