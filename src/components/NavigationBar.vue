@@ -78,7 +78,8 @@ export default {
             </ul>
             <div class="flex ml-auto justify-center items-center">
                 <div class="flex justify-center items-center">
-                    <i v-if="useUserDataStore().IsLoggedIn" @click="toggleNotificationBox" class="fa fa-exclamation flex items-center justify-center notif-icon">
+                    <i v-if="useUserDataStore().IsLoggedIn" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
+                        <p class="text-sm p-2 font-bold normal">INVITE</p>
                         <i v-if="notifsAvailable" class="notif-icon-indicator"></i>
                     </i>
                     <div v-show="notification" class="fixed flex justify-center notification-box-wrapper">
@@ -98,7 +99,8 @@ export default {
                     <li class="flex items-center w-full overflow-h justify-center"><UserInfoComponent/></li>
                 </ul>
             </transition>
-            <i v-if="useUserDataStore().IsLoggedIn" @click="toggleNotificationBox" class="fa fa-exclamation flex items-center justify-center notif-icon">
+            <i v-if="useUserDataStore().IsLoggedIn" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
+                <p class="text-sm p-2 font-bold normal">INVITE</p>
                 <i v-if="notifsAvailable" class="notif-icon-indicator"></i>
             </i>
         </nav>
@@ -179,10 +181,9 @@ header {
 
     .notif-icon {
         font-size:24px;
-        width: 32px;
         height: 32px;
         background-color: #F49089;
-        border-radius: 50%;
+        border-radius: 5px;
         transition: 0.1s ease all;
 
         .notif-icon-indicator {
@@ -191,8 +192,8 @@ header {
             height: 12px;
             background-color: rgb(255, 78, 78);
             border-radius: 50%;
-            top: -2px;
-            right: -2px;
+            top: -4px;
+            right: -4px;
         }
 
         &:hover {

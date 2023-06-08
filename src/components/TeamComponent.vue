@@ -172,7 +172,7 @@ export default {
                 <div v-else class="flex flex-col mt-4">
                     <p class="text-sm" style="color:#849591;">Enter new team name</p>
                     <div class="flex flex-row gap-2 items-center">
-                        <input type="text" v-model="teamName" maxlength="16" v-on:keyup.enter="EndEditName"/>
+                        <input type="text" v-model="teamName" maxlength="24" v-on:keyup.enter="EndEditName"/>
                         <button @click="EndEditName" class="submit-button transition-all">
                             <p>SUBMIT</p>
                         </button>
