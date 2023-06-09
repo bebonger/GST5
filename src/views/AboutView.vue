@@ -219,13 +219,13 @@
         <div>
           <h1>Hosts</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/8301957" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8301957" class="h-12 rounded-lg" loading="lazy">
                 <p>_gt</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
                 <p>Demonical</p>
@@ -236,67 +236,67 @@
         <div>
           <h1>Custom Mappers</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/4561368" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/4561368" class="h-12 rounded-lg" loading="lazy">
                 <p>Anxient</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/8640970" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8640970" class="h-12 rounded-lg" loading="lazy">
                 <p>enri</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/12704035" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/12704035" class="h-12 rounded-lg" loading="lazy">
                 <p>Fsjallink</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/2123087" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/2123087" class="h-12 rounded-lg" loading="lazy">
                 <p>hehe</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/7117621" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/7117621" class="h-12 rounded-lg" loading="lazy">
                 <p>Mimiliaa</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/9487458" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/9487458" class="h-12 rounded-lg" loading="lazy">
                 <p>Mocaotic</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/12366071" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/12366071" class="h-12 rounded-lg" loading="lazy">
                 <p>nanoya</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/5875419" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/5875419" class="h-12 rounded-lg" loading="lazy">
                 <p>newton-</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/10646707" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/10646707" class="h-12 rounded-lg" loading="lazy">
                 <p>Ralkinson</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/9162649" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/9162649" class="h-12 rounded-lg" loading="lazy">
                 <p>Slyze-</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/8953955" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8953955" class="h-12 rounded-lg" loading="lazy">
                 <p>Zelq</p>
@@ -307,7 +307,7 @@
         <div>
           <h1>Developer</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
                 <p>Demonical</p>
@@ -318,19 +318,19 @@
         <div>
           <h1>Playtesters</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/10549880" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/10549880" class="h-12 rounded-lg" loading="lazy">
                 <p>ninerik</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/7587763" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/7587763" class="h-12 rounded-lg" loading="lazy">
                 <p>magnatagamer123</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/10722794" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/10722794" class="h-12 rounded-lg" loading="lazy">
                 <p>Inquisitives</p>
@@ -341,19 +341,19 @@
         <div>
           <h1>GFX Artist</h1>
           <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/8244635" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/8244635" class="h-12 rounded-lg" loading="lazy">
                 <p>Hecatia</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/16551387" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/16551387" class="h-12 rounded-lg" loading="lazy">
                 <p>[K]</p>
               </a>
             </li>
-            <li class="flex basis-1/4">
+            <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/1997719" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/1997719" class="h-12 rounded-lg" loading="lazy">
                 <p>kaetwo</p>

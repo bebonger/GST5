@@ -16,7 +16,7 @@ defineProps<{
 export default {
     data() {
         return {
-            loading: false,
+            loaded: false,
             post: null,
             error: null,
             invitesJSON: [] as InviteInfo[],
@@ -50,13 +50,14 @@ export default {
             }
         },
         async fetchData() {
+            this.loaded = false;
             console.log("fetching invites");
             this.error = this.post = null;
-            this.loading = true;
             try {
                 const response = await this.$http.get("/api/teams/invites");
                 this.invitesJSON = response.data;
 
+                this.loaded = true;
                 this.$emit("dataFetched", this.invitesJSON.length);
             }
             catch (err) {
@@ -142,7 +143,8 @@ export default {
                     <p>BWS Rank {{Math.round(options[0]?.osu.global_rank**(0.9937**(options[0]?.osu.badges**2)))}}</p>
                 </div>      
             </div>
-            <div v-for="invite in invitesJSON" :key="invite?.sender?.osu.userID" class="invite-container flex flex-col w-full h-full overflow-auto gap-4 rounded-lg">
+            <div v-if="!loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
+            <div v-else v-for="invite in invitesJSON" :key="invite?.sender?.osu.userID" class="invite-container flex flex-col w-full h-full overflow-auto gap-4 rounded-lg">
                 <TeamInvite :sender="invite.sender" @invite-callback="fetchData"/>
             </div>
         </div>

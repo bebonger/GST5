@@ -18,10 +18,17 @@ export default {
     data() {
         return {
             editing: false,
-            teamName: ""
+            teamName: "",
+            avgBWS: 0,
         }
     },
+    created() {
+        this.avgBWS = Math.round((this.team.player1?.osu.global_rank**(0.9937**(this.team.player1?.osu.badges**2)) + this.team.player2?.osu.global_rank**(0.9937**(this.team.player2?.osu.badges**2))) * 0.5 )
+    },
     methods: {
+        isTeamEligible() {
+            return this.avgBWS >= 1000;
+        },
         isClientTeam() {
             //return true;
             return useUserDataStore().IsLoggedIn && (useUserDataStore().user?.osu.userID == this.team.player1?.osu.userID || useUserDataStore().user?.osu.userID == this.team.player2?.osu.userID);
@@ -77,7 +84,7 @@ export default {
 <template>
     <div class="team max-w-md w-full truncate">
         <div class="team flex flex-col">
-            <div class="team-image truncate h-24 flex">
+            <div class="team-image truncate h-40 flex">
                 <div class="z-20 image-overlay">
                     <svg class="gst-svg" width="403" height="55" viewBox="0 0 403 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.33">
@@ -183,7 +190,7 @@ export default {
                 </div>
                 <div class="flex flex-row gap-2 items-center justify-end">
                     <p class="text-xs" style="color: #849591;">AVG. BWS</p>
-                    <p class="text-2xl font-bold italic">#{{ Math.round((team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2)) + team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) * 0.5 ) }}</p>
+                    <p class="text-2xl font-bold italic">#{{ avgBWS }}</p>
                 </div>
             </div>
             <div class="players flex flex-row flex-wrap px-8 py-4">
@@ -197,7 +204,7 @@ export default {
                         </a>
                         <div class="flex flex-row gap-2 items-start justify-start">
                             <p class="align-top" style="font-size: 0.6rem; color: #849591;">BWS RANK</p>
-                            <p class="text-xl font-bold align-top">#{{  Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</p>
+                            <p class="text-lg font-bold align-top">#{{  Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</p>
                         </div>
                     </div>
                 </div>
@@ -211,7 +218,7 @@ export default {
                         </a>
                         <div class="flex flex-row gap-2 items-start justify-start">
                             <p class="align-top" style="font-size: 0.6rem; color: #849591;">BWS RANK</p>
-                            <p class="text-xl font-bold align-top">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>
+                            <p class="text-lg  font-bold align-top">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>
                         </div>
                     </div>
                 </div>
