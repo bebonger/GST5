@@ -32,10 +32,10 @@ export default {
   <header id="desktop-header">
     GREAT <br> 
     SINGAPORE <br> 
-    TOURNAMENT
+    TOURNAMENT 5
   </header>
   <header id="mobile-header">
-    GST
+    GST5
   </header>
 
   <a href="https://twitch.tv/osusg" class="twitch-banner flex flex-row gap-8 justify-end items-center p-4">

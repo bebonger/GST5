@@ -14,7 +14,6 @@ import 'vue-toast-notification/dist/theme-bootstrap.css';
 import './assets/main.css';
 
 const app = createApp(App);
-
 app.use(createPinia());
 app.use(router);
 app.use(VueCookies);
