@@ -178,7 +178,10 @@
           <ol>
             <li>Matches will be <b>best of 7</b> (first to 4). </li>
             <li>The mappool structure is 4 NM / 2 HD / 2 HR / 2 DT / 2 FM / TB.</li>
-            <li>+ add seeding rules &#128128;&#128128;&#128128;&#128128;</li>
+            <li>The top 4 teams from each group will continue onto the Bracket Stage, with the top 2 starting in the Winners' Bracket and the next 2 starting in the Losers' Bracket.</li>
+            <li>A team that places 1st in their group will face a team that places 2nd in their group. Similarly, a team that places 3rd in their group will face a team that places 4th in their group.</li>
+            <li>Team placement within each group will be decided by <b>Match Wins</b>, followed by <b>Map Wins</b> and the teams' match result.</li>
+            <li>Seeding for the Bracket Stage is based on the average of the z-scores of the highest scores on all the maps played.</li>
           </ol>
         </div>
         <div>
