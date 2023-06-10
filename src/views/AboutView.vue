@@ -308,17 +308,6 @@
           </ul>
         </div>
         <div>
-          <h1>Developer</h1>
-          <ul class="flex flex-wrap justify-start items-start">
-            <li class="flex xl:basis-1/4">
-              <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
-                <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
-                <p>Demonical</p>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
           <h1>Playtesters</h1>
           <ul class="flex flex-wrap justify-start items-start">
             <li class="flex xl:basis-1/4">
@@ -342,7 +331,54 @@
           </ul>
         </div>
         <div>
-          <h1>GFX Artist</h1>
+          <h1>Commentators</h1>
+          <ul class="flex flex-wrap justify-start items-start">
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/8301957" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/8301957" class="h-12 rounded-lg" loading="lazy">
+                <p>_gt</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/5144534" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/5144534" class="h-12 rounded-lg" loading="lazy">
+                <p>Dawnwing</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/10722794" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/10722794" class="h-12 rounded-lg" loading="lazy">
+                <p>Inquisitives</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/8497340" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/8497340" class="h-12 rounded-lg" loading="lazy">
+                <p>Jet-</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/6398160" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/6398160" class="h-12 rounded-lg" loading="lazy">
+                <p>Loslite</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/5407620" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/5407620" class="h-12 rounded-lg" loading="lazy">
+                <p>Tebi</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/7537133" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/7537133" class="h-12 rounded-lg" loading="lazy">
+                <p>megumic</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1>GFX/Artist</h1>
           <ul class="flex flex-wrap justify-start items-start">
             <li class="flex xl:basis-1/4">
               <a href="https://osu.ppy.sh/u/8244635" class="flex grow gap-2 items-center p-2 rounded-lg">
@@ -365,11 +401,35 @@
           </ul>
         </div>
         <div>
+          <h1>Sheets</h1>
+          <ul class="flex flex-wrap justify-start items-start">
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/16551387" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/16551387" class="h-12 rounded-lg" loading="lazy">
+                <p>[K]</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1>Developer</h1>
+          <ul class="flex flex-wrap justify-start items-start">
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
+                <p>Demonical</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <!--
+        <div>
           <h1>Referees</h1>
           <ul class="flex flex-wrap justify-start items-start">
             NONE RIGHT NOW
           </ul>
         </div>
+        -->
       </div>
     </section>
   </main>
@@ -452,7 +512,7 @@
 
     a {
 
-      color:aqua;
+      color:#90b9ff;
       transition: 0.4s;
 
       &:hover {
