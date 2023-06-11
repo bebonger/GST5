@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import Simplebar from 'simplebar-vue';
+import 'simplebar-vue/dist/simplebar.min.css';
+</script>
+
 <template>
   <main class="info max-w-5xl h-full w-full mx-auto">
     <section class="info-container">
@@ -10,11 +15,11 @@
         <ol>
           <li>
             <h1>Registration Period</h1>
-            <p>10 June - 25 June</p>
+            <p>10 June - 25 June 2359</p>
           </li>
           <li>
             <h1>Screening</h1>
-            <p>25 June - 8 July (Tentative)</p>
+            <p>2 July - 8 July (Tentative)</p>
           </li>
           <li>
             <h1>Group Stage Draw</h1>
@@ -53,26 +58,26 @@
       </div>
       <div class="info-content">
         <div>
-          <h1>1ST PLACE</h1>
+          <h1 style="color: #FFD700">1ST PLACE</h1>
           <ol>
             <li>Unique Profile Badge</li>
             <li>Physical Medal</li>
             <li>Trophy Plaque</li>
-            <li>money? idk</li>
+            <li>40 SGD per player</li>
           </ol>
         </div>
         <div>
-          <h1>2ND PLACE</h1>
+          <h1 style="color: #C0C0C0;">2ND PLACE</h1>
           <ol>
             <li>Physical Medal</li>
-            <li>money? idk</li>
+            <li>20 SGD per player</li>
           </ol>
         </div>
         <div>
-          <h1>3RD PLACE</h1>
+          <h1 style="color: #CD7F32;">3RD PLACE</h1>
           <ol>
             <li>Physical Medal</li>
-            <li>money? idk</li>
+            <li>10 SGD per player</li>
           </ol>
         </div>
       </div>
@@ -150,7 +155,12 @@
                 <li>Additional time may be given under the referee's discretion.</li>
               </ol>
             </li>
-            <li>This tournament features a FreeMod pool. In a free...</li>
+            <li>
+              This tournament features a FreeMod pool. For a FreeMod map, each player must take at least one mod. Available mods are <b>HD</b>, <b>HR</b>, <b>EZ</b> and <b>FL</b>. 
+              <ol>
+                <li>There will be custom <b>EZ multipliers</b> for FreeMod maps.</li>
+              </ol>
+            </li>
             <li>In the case of a draw, the team that did not pick the map gets the point.</li>
             <li>Players who no-show at least 2 matches without sufficient prior notice will be barred from joining future tournaments.</li>
             <li>Failed scores <b>do not</b> count. This is to encourage players to take NoFail on FreeMod maps.</li>

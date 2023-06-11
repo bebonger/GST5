@@ -58,32 +58,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-html {
-  overflow-y: overlay;
-}
-
-
 html::-webkit-scrollbar {
-  width: 7px;
-  height: 10px;
+  display: none;
 }
-
-/* Track */
-html::-webkit-scrollbar-track {
-  background: var(--lightestgrey); 
-  margin-top: 85px;
-}
-
-/* Handle */
-html::-webkit-scrollbar-thumb {
-  background: #ffffff; 
-}
-
-/* Handle on hover */
-html::-webkit-scrollbar-thumb:hover {
-  background: #ffffff; 
-}
-
 @media (max-width: 64rem) {
   /* Track */
   html::-webkit-scrollbar-track {

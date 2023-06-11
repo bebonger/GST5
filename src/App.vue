@@ -5,6 +5,7 @@ import { inject } from 'vue'
 import { useUserDataStore } from './stores/userData'
 import NavbarGap from './components/NavbarGap.vue'
 import MainBackground from './components/MainBackground.vue'
+import ScrollbarComponent from './components/ScrollbarComponent.vue'
 </script>
 
 <script lang="ts">
@@ -23,7 +24,10 @@ export default {
       }
     });
   },
-  components: { MainBackground },
+  components: { 
+    MainBackground,
+    ScrollbarComponent,
+  },
   watch: {
     $route (to, from) {
       let path = to.path;
@@ -39,12 +43,12 @@ export default {
 
 <template>
   
+  <ScrollbarComponent/>
   <NavigationBar/>
   <NavbarGap/>
 
   <MainBackground/>
   <div class="dark-overlay" :class="{ 'fade-in': !isHomePage }"></div>
-
   <RouterView />
 </template>
 
