@@ -10,7 +10,6 @@ import VueAxios from 'vue-axios';
 
 import ToastPlugin from 'vue-toast-notification';
 import 'vue-toast-notification/dist/theme-bootstrap.css';
-import 'simplebar-vue/dist/simplebar.min.css';
 
 import './assets/main.css';
 

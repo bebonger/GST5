@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import Simplebar from 'simplebar-vue';
-import 'simplebar-vue/dist/simplebar.min.css';
-</script>
-
 <template>
   <main class="info max-w-5xl h-full w-full mx-auto">
     <section class="info-container">
