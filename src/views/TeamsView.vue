@@ -15,6 +15,7 @@ export default {
             post: null,
             error: null,
             teamsJSON: [] as TeamInfo[],
+            sortedTeams: [] as TeamInfo[],
             myTeam: {} as TeamInfo
         };
     },
@@ -40,8 +41,7 @@ export default {
           try {
               const response = await this.$http.get("/api/teams");
               this.teamsJSON = response.data;
-              this.loaded = true;
-              window.setTimeout(this.parseData, 100);
+              this.parseData();
           }
           catch (err) {
               console.error(err);
@@ -50,7 +50,7 @@ export default {
       parseData() {
         if (!useUserDataStore().IsLoggedIn) return;
 
-        this.teamsJSON = this.teamsJSON.filter((team) => {
+        this.sortedTeams = this.sortTeams(this.teamsJSON).filter((team) => {
           if (
             team.player1.osu.userID === useUserDataStore().user?.osu.userID ||
             team.player2.osu.userID === useUserDataStore().user?.osu.userID
@@ -60,6 +60,38 @@ export default {
           }
           return true; // Keep all other teams in the filtered array
         });
+
+        this.loaded = true;
+      },
+      sortTeams(teams: TeamInfo[]) {
+        const sortedTeams = [...teams];
+        return sortedTeams.sort((a, b) => {
+          const formulaA =
+            Math.round(
+              (a.player1?.osu.global_rank ** (0.9937 ** (a.player1?.osu.badges ** 2)) +
+                a.player2?.osu.global_rank ** (0.9937 ** (a.player2?.osu.badges ** 2))) *
+                0.5
+            );
+
+          const formulaB =
+            Math.round(
+              (b.player1?.osu.global_rank ** (0.9937 ** (b.player1?.osu.badges ** 2)) +
+                b.player2?.osu.global_rank ** (0.9937 ** (b.player2?.osu.badges ** 2))) *
+                0.5
+            );
+
+          return formulaA - formulaB;
+        });
+      },
+      getTeamSeed(team: TeamInfo) {
+        const sortedTeams = this.sortTeams(this.teamsJSON);
+        const position = sortedTeams.findIndex(t => t === team);
+
+        const seeds = ['A', 'B', 'C', 'D', 'E'];
+        const interval = Math.floor(position / 8);
+        const adjustedIndex = interval % seeds.length;
+        
+        return seeds[adjustedIndex];
       }
     },
     components: { TeamComponent }
@@ -74,12 +106,12 @@ export default {
         <h1 class="page-title">Your Team</h1>
         <div class="flex flex-row gap-4">
         </div>
-        <TeamComponent :team="myTeam" @on-edit="fetchData"/>
+        <TeamComponent :team="myTeam" :seed="this.getTeamSeed(team)" @on-edit="fetchData"/>
       </div>
 
       <h1 class="page-title">Teams</h1>
       <div class="flex flex-wrap justify-center gap-4">
-        <TeamComponent v-for="team in teamsJSON" :key="team.name" :team="team"/>
+        <TeamComponent v-for="team in sortedTeams" :key="team.name" :team="team" :seed="this.getTeamSeed(team)"/>
       </div>
     </div>
   </main>

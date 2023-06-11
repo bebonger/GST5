@@ -41,6 +41,14 @@
   font-weight: 600;
 }
 
+@font-face {
+  font-family: Din;
+  src: url("./fonts/DIN-2014_ExtraBold.woff") format('woff');
+  font-style: normal;
+  font-weight: 800;
+}
+
+
 a {
   text-decoration: none;
 }

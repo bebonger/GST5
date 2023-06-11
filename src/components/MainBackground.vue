@@ -37,47 +37,12 @@
     margin: auto; 
     min-width: 50%;
     min-height: 50%;
-}
 
-@media (max-width: 64rem) {
+    -khtml-user-select: none;
+    -o-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
 
-    .girl-wrapper {
-        position: absolute;
-        top: 80px;
-        right: 0;
-        z-index: 1;
-        width: auto;
-        height: 100%;
-        overflow: hidden;
-    }
-    
-    .girl {  
-        height: 60%;  /* Set height to auto */
-        z-index: -1;
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-    }
-}
-
-@media (min-width: 64rem) {
-    .girl-wrapper {
-        position: absolute;
-        top: 80px;
-        right: 0;
-        z-index: 1;
-        width: auto;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .girl {  
-        height: 800px;
-        bottom: 0;
-        right: 0;
-        z-index: -1;
-        position: fixed;
-    }
 }
 </style>

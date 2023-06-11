@@ -77,7 +77,7 @@ export default {
 
 <style lang="scss">
 .scrollbar-container {
-    z-index: 999;
+    z-index: 50;
 
     padding-bottom: 20px;
     padding-top: 105px;
@@ -93,9 +93,10 @@ export default {
     background-color: transparent;
 
     .scrollbar-track {
-        width: 2px;
+        width: 4px;
         height: 100%;
-        background-color: white;
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 5px;
 
         .scrollbar-handle-container {
             display: flex;
@@ -110,8 +111,8 @@ export default {
                 position: absolute;
                 width: 16px;
                 height: 16px;
-                background-color: white;
-                border-radius: 50%;
+                background-color: rgba(255, 255, 255, 1);
+                transform: rotate(45deg);
 
                 /*
                 &:hover {
@@ -126,8 +127,6 @@ export default {
 @media (max-width: 64rem) {
     .scrollbar-container {
         padding-top: 80px;
-
-        opacity: 0.25;
     }
 }
 

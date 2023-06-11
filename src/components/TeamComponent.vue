@@ -3,6 +3,7 @@ import type { TeamInfo } from '@/Interfaces/team';
 import { useUserDataStore } from '@/stores/userData';
 defineProps<{
     team: TeamInfo
+    seed: number
 }>();
 </script>
 
@@ -23,7 +24,7 @@ export default {
         }
     },
     created() {
-        this.avgBWS = Math.round((this.team.player1?.osu.global_rank**(0.9937**(this.team.player1?.osu.badges**2)) + this.team.player2?.osu.global_rank**(0.9937**(this.team.player2?.osu.badges**2))) * 0.5 )
+        this.avgBWS = Math.round((this.team.player1?.osu.global_rank**(0.9937**(this.team.player1?.osu.badges**2)) + this.team.player2?.osu.global_rank**(0.9937**(this.team.player2?.osu.badges**2))) * 0.5 );
     },
     methods: {
         isTeamEligible() {
@@ -75,6 +76,35 @@ export default {
                 this.$toast.success(response.data.success);
                 this.$emit("onEdit");
             }
+        },
+        getSeedColourPalette(seed: string) {
+            const palette = {
+                header: '#849591;',
+                footer: 'rgba(128, 244, 217, 0.14);'
+            }
+
+            if (seed == 'A') {
+                palette.header = '#849591;',
+                palette.footer = 'rgba(128, 244, 217, 0.14);'
+            }
+            if (seed == 'B') {
+                palette.header = '#858495;',
+                palette.footer = 'rgba(128, 182, 244, 0.14);'
+            }
+            if (seed == 'C') {
+                palette.header = '#95848E;',
+                palette.footer = 'rgba(186, 128, 244, 0.14);'
+            }
+            if (seed == 'D') {
+                palette.header = '#958A84;',
+                palette.footer = 'rgba(244, 184, 128, 0.14);'
+            }
+            if (seed == 'E') {
+                palette.header = '#A8A58D;',
+                palette.footer = 'rgba(242, 244, 128, 0.14);'
+            }
+
+            return palette;
         }
     }
 }
@@ -84,8 +114,8 @@ export default {
 <template>
     <div class="team max-w-md w-full truncate">
         <div class="team flex flex-col">
-            <div class="team-image truncate h-40 flex">
-                <div class="z-20 image-overlay">
+            <div class="team-image truncate h-40 flex" :style="`border-bottom: 4px solid ${getSeedColourPalette(seed).header}`">
+                <div class="z-20 image-overlay" :style="`background-color: ${getSeedColourPalette(seed).header}`">
                     <svg class="gst-svg" width="403" height="55" viewBox="0 0 403 55" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g opacity="0.33">
                         <path d="M19.8867 26.4562V14.5764L37.4044 14.5764V17.0091H26.3335V24.0235H31.503V21.4489H28.6648V19.523H37.4024V26.4562H19.8867Z" fill="white"/>
@@ -156,6 +186,11 @@ export default {
                     </svg>
                 </div>
 
+                <div class="z-30 absolute right-0 top-0 flex flex-col items-center justify-center h-3/4 w-1/5">
+                    <p class="tracking-wide font-semibold leading-4" style="font-size: 0.6rem;">SEED</p>
+                    <p class="text-6xl font-extrabold leading-9 drop-shadow-[0_3px_2px_rgba(0,0,0,0.5)]">{{ this.seed }}</p>
+                </div>
+
                 <button v-if="isClientTeam()" @click="SelectFiles" class="z-10 absolute h-full w-full transition-all bg-opacity-40 bg-black hover:bg-opacity-60 hover:bg-pink-p">
                     <div class="flex flex-row gap-4 justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white"><path d="M6 20q-.825 0-1.412-.587Q4 18.825 4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413Q18.825 20 18 20Zm5-4V7.85l-2.6 2.6L7 9l5-5 5 5-1.4 1.45-2.6-2.6V16Z"></path></svg>
@@ -193,7 +228,7 @@ export default {
                     <p class="text-2xl font-bold italic">#{{ avgBWS }}</p>
                 </div>
             </div>
-            <div class="players flex flex-row flex-wrap px-8 py-4">
+            <div class="players flex flex-row flex-wrap px-6 py-4" :style="`background-color: ${getSeedColourPalette(seed).footer}`">
                 <div class="flex flex-row grow gap-2">
                     <a :href="`https://osu.ppy.sh/u/${team.player1?.osu.userID}`">
                         <img :src="team.player1?.osu.avatar"/>
@@ -202,7 +237,7 @@ export default {
                         <a :href="`https://osu.ppy.sh/u/${team.player1?.osu.userID}`">
                             <h2 class="truncate">{{team.player1?.osu.username}}</h2>
                         </a>
-                        <div class="flex flex-row gap-2 items-start justify-start">
+                        <div class="flex flex-row gap-1 items-start justify-start">
                             <p class="align-top" style="font-size: 0.6rem; color: #849591;">BWS RANK</p>
                             <p class="text-lg font-bold align-top">#{{  Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</p>
                         </div>
@@ -216,7 +251,7 @@ export default {
                         <a :href="`https://osu.ppy.sh/u/${team.player2?.osu.userID}`">
                             <h2 class="truncate">{{team.player2?.osu.username}}</h2>
                         </a>
-                        <div class="flex flex-row gap-2 items-start justify-start">
+                        <div class="flex flex-row gap-1 items-start justify-start">
                             <p class="align-top" style="font-size: 0.6rem; color: #849591;">BWS RANK</p>
                             <p class="text-lg  font-bold align-top">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>
                         </div>
@@ -325,14 +360,12 @@ export default {
     }
 
     .team-image {
-        border-bottom: 4px solid #849591;
         overflow: hidden;
 
         .image-overlay {
             position: absolute;
             height: 24rem;
             aspect-ratio: 1/1;
-            background-color: #849591;
             transform: rotate(-45deg);
             bottom: 0px;
             right: -230px;
@@ -356,9 +389,6 @@ export default {
     }
 
     .players {
-
-        background-color: rgba(128, 244, 217, 0.1);
-
         img {
             height: 54px;
             width: 54px;
