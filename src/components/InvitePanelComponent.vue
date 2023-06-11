@@ -158,7 +158,7 @@ export default {
     width: 369px;
     height: 410px;
 
-    z-index: 100;
+    z-index: 99;
     position: fixed;
 
     .background {

@@ -228,7 +228,7 @@ header {
     }
 
     .notification-box-wrapper {
-        z-index: 5;
+        z-index: 99;
         position: fixed;
         margin-top: 60px;
         height: calc(100% - 60px);

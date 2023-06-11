@@ -126,7 +126,7 @@ export default {
 
 @media (max-width: 64rem) {
     .scrollbar-container {
-        padding-top: 80px;
+        display: none;
     }
 }
 
