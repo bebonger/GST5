@@ -83,7 +83,7 @@ export default {
           return formulaA - formulaB;
         });
       },
-      getTeamSeed(team: TeamInfo) {
+      getTeamSeed(team: TeamInfo): string {
         const sortedTeams = this.sortTeams(this.teamsJSON);
         const position = sortedTeams.findIndex(t => t === team);
 
@@ -106,12 +106,12 @@ export default {
         <h1 class="page-title">Your Team</h1>
         <div class="flex flex-row gap-4">
         </div>
-        <TeamComponent :team="myTeam" :seed="this.getTeamSeed(team)" @on-edit="fetchData"/>
+        <TeamComponent :team="myTeam" :seed="getTeamSeed(myTeam)" @on-edit="fetchData"/>
       </div>
 
       <h1 class="page-title">Teams</h1>
       <div class="flex flex-wrap justify-center gap-4">
-        <TeamComponent v-for="team in sortedTeams" :key="team.name" :team="team" :seed="this.getTeamSeed(team)"/>
+        <TeamComponent v-for="team in sortedTeams" :key="team.name" :team="team" :seed="getTeamSeed(team)"/>
       </div>
     </div>
   </main>

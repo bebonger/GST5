@@ -3,7 +3,7 @@ import type { TeamInfo } from '@/Interfaces/team';
 import { useUserDataStore } from '@/stores/userData';
 defineProps<{
     team: TeamInfo
-    seed: number
+    seed: string
 }>();
 </script>
 
@@ -188,7 +188,7 @@ export default {
 
                 <div class="z-30 absolute right-0 top-0 flex flex-col items-center justify-center h-3/4 w-1/5">
                     <p class="tracking-wide font-semibold leading-4" style="font-size: 0.6rem;">SEED</p>
-                    <p class="text-6xl font-extrabold leading-9 drop-shadow-[0_3px_2px_rgba(0,0,0,0.5)]">{{ this.seed }}</p>
+                    <p class="text-6xl font-extrabold leading-9 drop-shadow-[0_3px_2px_rgba(0,0,0,0.5)]">{{ seed }}</p>
                 </div>
 
                 <button v-if="isClientTeam()" @click="SelectFiles" class="z-10 absolute h-full w-full transition-all bg-opacity-40 bg-black hover:bg-opacity-60 hover:bg-pink-p">
