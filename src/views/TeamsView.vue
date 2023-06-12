@@ -19,7 +19,7 @@ export default {
             myTeam: {} as TeamInfo
         };
     },
-    created() {
+    mounted() {
         // watch the params of the route to fetch the data again
         this.$watch(() => this.$route.params, () => {
             this.fetchData();
@@ -48,9 +48,12 @@ export default {
           }
       },
       parseData() {
+        this.sortedTeams = this.sortTeams(this.teamsJSON);
+        this.loaded = true;
+
         if (!useUserDataStore().IsLoggedIn) return;
 
-        this.sortedTeams = this.sortTeams(this.teamsJSON).filter((team) => {
+        this.sortedTeams = this.sortedTeams.filter((team) => {
           if (
             team.player1.osu.userID === useUserDataStore().user?.osu.userID ||
             team.player2.osu.userID === useUserDataStore().user?.osu.userID
@@ -61,7 +64,7 @@ export default {
           return true; // Keep all other teams in the filtered array
         });
 
-        this.loaded = true;
+        
       },
       sortTeams(teams: TeamInfo[]) {
         const sortedTeams = [...teams];
