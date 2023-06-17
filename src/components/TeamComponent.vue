@@ -21,10 +21,12 @@ export default {
             editing: false,
             teamName: "",
             avgBWS: 0,
+            avgPP: 0,
         }
     },
     created() {
         this.avgBWS = Math.round((this.team.player1?.osu.global_rank**(0.9937**(this.team.player1?.osu.badges**2)) + this.team.player2?.osu.global_rank**(0.9937**(this.team.player2?.osu.badges**2))) * 0.5 );
+        this.avgPP = Math.round((Number(this.team.player1.osu.pp) + Number(this.team.player2.osu.pp)) * 0.5);
     },
     methods: {
         isTeamEligible() {
@@ -223,9 +225,15 @@ export default {
                         </button>
                     </div>
                 </div>
-                <div class="flex flex-row gap-2 items-center justify-end">
-                    <p class="text-xs" style="color: #849591;">AVG. BWS</p>
-                    <p class="text-2xl font-bold italic">#{{ avgBWS }}</p>
+                <div class="flex flex-row gap-4 items-center justify-end">
+                    <div class="flex flex-col items-center justify-end">
+                        <p class="text-xs" style="color: #849591;">AVG. PP</p>
+                        <p class="text-2xl font-bold italic">{{ avgPP  }}</p>
+                    </div>
+                    <div class="flex flex-col items-center justify-end">
+                        <p class="text-xs" style="color: #849591;">AVG. BWS</p>
+                        <p class="text-2xl font-bold italic">#{{ avgBWS }}</p>
+                    </div>
                 </div>
             </div>
             <div class="players flex flex-row flex-wrap px-6 py-4" :style="`background-color: ${getSeedColourPalette(seed).footer}`">
@@ -237,9 +245,15 @@ export default {
                         <a :href="`https://osu.ppy.sh/u/${team.player1?.osu.userID}`">
                             <h2 class="truncate">{{team.player1?.osu.username}}</h2>
                         </a>
-                        <div class="flex flex-row gap-1 items-start justify-start">
-                            <p class="align-top" style="font-size: 0.6rem; color: #849591;">BWS RANK</p>
-                            <p class="text-lg font-bold align-top">#{{  Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</p>
+                        <div class="flex flex-col gap-1 items-start justify-start">
+                            <div class="flex flex-col items-center justify-center">
+                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;">BWS RANK <b>#{{ Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</b></p>
+                                <!--<p class="text-lg font-bold">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>-->
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;"><b>{{ Math.round(team.player1.osu.pp) }}</b> PP</p>
+                                <!--<p class="text-lg font-bold">{{ Math.round(team.player2.osu.pp) }}</p>-->
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -251,9 +265,15 @@ export default {
                         <a :href="`https://osu.ppy.sh/u/${team.player2?.osu.userID}`">
                             <h2 class="truncate">{{team.player2?.osu.username}}</h2>
                         </a>
-                        <div class="flex flex-row gap-1 items-start justify-start">
-                            <p class="align-top" style="font-size: 0.6rem; color: #849591;">BWS RANK</p>
-                            <p class="text-lg  font-bold align-top">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>
+                        <div class="flex flex-col gap-1 items-start justify-start">
+                            <div class="flex flex-col items-center justify-center">
+                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;">BWS RANK <b>#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</b></p>
+                                <!--<p class="text-lg font-bold">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>-->
+                            </div>
+                            <div class="flex flex-col items-center justify-center">
+                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;"><b>{{ Math.round(team.player2.osu.pp) }}</b> PP</p>
+                                <!--<p class="text-lg font-bold">{{ Math.round(team.player2.osu.pp) }}</p>-->
+                            </div>
                         </div>
                     </div>
                 </div>

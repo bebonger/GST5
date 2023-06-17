@@ -48,7 +48,7 @@ export default {
           }
       },
       parseData() {
-        this.sortedTeams = this.sortTeams(this.teamsJSON);
+        this.sortedTeams = this.sortByPP(this.teamsJSON);
         this.loaded = true;
 
         if (!useUserDataStore().IsLoggedIn) return;
@@ -66,7 +66,7 @@ export default {
 
         
       },
-      sortTeams(teams: TeamInfo[]) {
+      sortByRank(teams: TeamInfo[]) {
         const sortedTeams = [...teams];
         return sortedTeams.sort((a, b) => {
           const formulaA =
@@ -86,8 +86,16 @@ export default {
           return formulaA - formulaB;
         });
       },
+      sortByPP(teams: TeamInfo[]) {
+        const sortedTeams = [...teams];
+        return sortedTeams.sort((a, b) => {
+          const formulaA = (Number(a.player1?.osu.pp) + Number(a.player2?.osu.pp)) * 0.5;
+          const formulaB = (Number(b.player1?.osu.pp) + Number(b.player2?.osu.pp)) * 0.5;
+          return formulaB - formulaA;
+        });
+      },
       getTeamSeed(team: TeamInfo): string {
-        const sortedTeams = this.sortTeams(this.teamsJSON);
+        const sortedTeams = this.sortByPP(this.teamsJSON);
         const position = sortedTeams.findIndex(t => t === team);
 
         const seeds = ['A', 'B', 'C', 'D', 'E'];
@@ -103,7 +111,7 @@ export default {
 
 <template>
   <div v-if="!loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
-  <main v-else class="max-w-5xl h-full w-full pt-8 mx-auto">
+  <main v-else class="h-full w-full pt-8 mx-auto">
     <div class="flex flex-col gap-10 pb-6">
       <div v-if="myTeam.player1" class="flex flex-col w-full justify-center items-center mx-auto gap-4">
         <h1 class="page-title">Your Team</h1>
