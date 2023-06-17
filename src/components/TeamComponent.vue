@@ -247,11 +247,11 @@ export default {
                         </a>
                         <div class="flex flex-col gap-1 items-start justify-start">
                             <div class="flex flex-col items-center justify-center">
-                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;">BWS RANK <b>#{{ Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</b></p>
+                                <p class="leading-3" style="font-size: 0.6rem;" :style="`color: ${getSeedColourPalette(seed).header}`">BWS RANK <b>#{{ Math.round(team.player1?.osu.global_rank**(0.9937**(team.player1?.osu.badges**2))) }}</b></p>
                                 <!--<p class="text-lg font-bold">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>-->
                             </div>
                             <div class="flex flex-col items-center justify-center">
-                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;"><b>{{ Math.round(team.player1.osu.pp) }}</b> PP</p>
+                                <p class="leading-3" style="font-size: 0.6rem;" :style="`color: ${getSeedColourPalette(seed).header}`"><b>{{ Math.round(team.player1.osu.pp) }}</b> PP</p>
                                 <!--<p class="text-lg font-bold">{{ Math.round(team.player2.osu.pp) }}</p>-->
                             </div>
                         </div>
@@ -267,11 +267,11 @@ export default {
                         </a>
                         <div class="flex flex-col gap-1 items-start justify-start">
                             <div class="flex flex-col items-center justify-center">
-                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;">BWS RANK <b>#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</b></p>
+                                <p class="leading-3" style="font-size: 0.6rem;" :style="`color: ${getSeedColourPalette(seed).header}`">BWS RANK <b>#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</b></p>
                                 <!--<p class="text-lg font-bold">#{{ Math.round(team.player2?.osu.global_rank**(0.9937**(team.player2?.osu.badges**2))) }}</p>-->
                             </div>
                             <div class="flex flex-col items-center justify-center">
-                                <p class="leading-3" style="font-size: 0.6rem; color: #849591;"><b>{{ Math.round(team.player2.osu.pp) }}</b> PP</p>
+                                <p class="leading-3" style="font-size: 0.6rem;" :style="`color: ${getSeedColourPalette(seed).header}`"><b>{{ Math.round(team.player2.osu.pp) }}</b> PP</p>
                                 <!--<p class="text-lg font-bold">{{ Math.round(team.player2.osu.pp) }}</p>-->
                             </div>
                         </div>
