@@ -105,7 +105,7 @@ export default {
                 palette.header = '#A8A58D;',
                 palette.footer = 'rgba(242, 244, 128, 0.14);'
             }
-            if (seed == 'OUT') {
+            if (seed == 'X') {
                 palette.header = '#FF756C;',
                 palette.footer = 'rgba(255, 102, 102, 0.14);'
             }
