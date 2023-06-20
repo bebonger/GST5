@@ -105,6 +105,10 @@ export default {
                 palette.header = '#A8A58D;',
                 palette.footer = 'rgba(242, 244, 128, 0.14);'
             }
+            if (seed == 'OUT') {
+                palette.header = '#FF756C;',
+                palette.footer = 'rgba(255, 102, 102, 0.14);'
+            }
 
             return palette;
         }
@@ -189,7 +193,6 @@ export default {
                 </div>
 
                 <div class="z-30 absolute right-0 top-0 flex flex-col items-center justify-center h-3/4 w-1/5">
-                    <p class="tracking-wide font-semibold leading-4" style="font-size: 0.6rem;">SEED</p>
                     <p class="text-6xl font-extrabold leading-9 drop-shadow-[0_3px_2px_rgba(0,0,0,0.5)]">{{ seed }}</p>
                 </div>
 

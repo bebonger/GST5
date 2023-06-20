@@ -1,6 +1,7 @@
 import type { UserInfo } from "./user";
 
 export interface TeamInfo {
+    teamID: number,
     avatar: string,
     name: string,
     player1: UserInfo,
