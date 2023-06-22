@@ -102,7 +102,7 @@ export default {
         const interval = Math.floor(position / 8);
         const adjustedIndex = interval % seeds.length;
         
-        if (adjustedIndex >= 6) return 'X';
+        if (interval >= 5) return 'X';
         return seeds[adjustedIndex];
       }
     },
