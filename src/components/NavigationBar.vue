@@ -79,11 +79,11 @@ export default {
             </ul>
             <div class="flex ml-auto justify-center items-center">
                 <div class="flex justify-center items-center">
-                    <i v-if="useUserDataStore().IsLoggedIn" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
+                    <i v-if="false" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
                         <p class="text-sm p-2 font-bold normal">INVITE</p>
                         <i v-if="notifsAvailable" class="notif-icon-indicator"></i>
                     </i>
-                    <div v-show="notification" class="fixed flex justify-center notification-box-wrapper">
+                    <div v-show="false" class="fixed flex justify-center notification-box-wrapper">
                         <InvitePanelComponent @interface="getInvitePanelInterface" :mobile="false" @data-fetched="updateNotifIcon"/>
                     </div>
                 </div>
@@ -100,14 +100,14 @@ export default {
                     <li class="flex items-center w-full overflow-h justify-center"><UserInfoComponent/></li>
                 </ul>
             </transition>
-            <i v-if="useUserDataStore().IsLoggedIn" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
+            <i v-if="false" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
                 <p class="text-sm p-2 font-bold normal">INVITE</p>
                 <i v-if="notifsAvailable" class="notif-icon-indicator"></i>
             </i>
         </nav>
     </header>
 
-    <div v-show="notification" class="fixed flex justify-center w-full h-full notification-box-wrapper">
+    <div v-show="false" class="fixed flex justify-center w-full h-full notification-box-wrapper">
         <InvitePanelComponent @interface="getInvitePanelInterface" :mobile="true" @data-fetched="updateNotifIcon"/>
     </div>
 </template>

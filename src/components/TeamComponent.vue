@@ -196,7 +196,7 @@ export default {
                     <p class="text-6xl font-extrabold leading-9 drop-shadow-[0_3px_2px_rgba(0,0,0,0.5)]">{{ seed }}</p>
                 </div>
 
-                <button v-if="isClientTeam()" @click="SelectFiles" class="z-10 absolute h-full w-full transition-all bg-opacity-40 bg-black hover:bg-opacity-60 hover:bg-pink-p">
+                <button v-if="false" @click="SelectFiles" class="z-10 absolute h-full w-full transition-all bg-opacity-40 bg-black hover:bg-opacity-60 hover:bg-pink-p">
                     <div class="flex flex-row gap-4 justify-center items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="white"><path d="M6 20q-.825 0-1.412-.587Q4 18.825 4 18v-3h2v3h12v-3h2v3q0 .825-.587 1.413Q18.825 20 18 20Zm5-4V7.85l-2.6 2.6L7 9l5-5 5 5-1.4 1.45-2.6-2.6V16Z"></path></svg>
                         <p>Change Banner</p>
@@ -210,7 +210,7 @@ export default {
             <div class="flex flex-col px-8 py-2 gap-2">
                 <div v-if="!editing" class="flex flex-row gap-2 items-start">
                     <h1>{{ team.name }}</h1>
-                    <button v-if="isClientTeam()" @click="StartEditName">
+                    <button v-if="false" @click="StartEditName">
                         <svg viewBox="189.115 144.808 122.881 121.495" width="18" height="18">
                             <path d="M 217.775 146.433 L 247.995 146.433 L 233.575 161.503 L 217.775 161.503 C 214.173 161.505 210.722 162.945 208.185 165.503 C 205.628 168.039 204.188 171.491 204.185 175.093 L 204.185 251.233 L 280.325 251.233 C 283.928 251.232 287.38 249.792 289.915 247.233 C 292.475 244.698 293.915 241.245 293.915 237.643 L 293.915 222.093 L 308.985 206.353 L 308.985 237.643 C 308.976 245.232 305.95 252.505 300.575 257.863 L 300.575 257.913 C 295.221 263.277 287.955 266.295 280.375 266.303 L 200.615 266.303 C 197.575 266.297 194.662 265.085 192.515 262.933 C 190.347 260.778 189.124 257.85 189.115 254.793 L 189.115 175.093 C 189.125 167.507 192.151 160.236 197.525 154.883 L 197.575 154.793 C 202.928 149.425 210.194 146.403 217.775 146.393 L 217.775 146.433 Z M 262.115 221.263 L 232.695 227.263 L 236.945 195.953 L 262.115 221.263 Z M 246.245 186.473 L 285.415 145.703 C 286.281 144.753 287.691 144.532 288.805 145.173 L 311.285 166.933 C 312.305 167.939 312.216 169.61 311.095 170.503 L 271.395 211.793 L 246.245 186.473 Z" style="fill: rgb(255, 255, 255);"></path>
                         </svg>                    
