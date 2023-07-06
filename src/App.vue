@@ -52,7 +52,7 @@ export default {
   <RouterView />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .dark-overlay {
   position: fixed;
   top: 0;

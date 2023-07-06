@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { TeamInfo } from "@/Interfaces/team";
 import TeamComponent from "../components/TeamComponent.vue";
+import GroupComponent from "../components/GroupComponent.vue";
 import { useUserDataStore } from "../stores/userData"
 const userDataStore = useUserDataStore();
 </script>
@@ -16,7 +17,9 @@ export default {
             error: null,
             teamsJSON: [] as TeamInfo[],
             sortedTeams: [] as TeamInfo[],
-            myTeam: {} as TeamInfo
+            myTeam: {} as TeamInfo,
+
+            currentTab: "teams" // or groups
         };
     },
     mounted() {
@@ -106,24 +109,52 @@ export default {
         return seeds[adjustedIndex];
       }
     },
-    components: { TeamComponent }
+    components: { TeamComponent, GroupComponent }
 }
 </script>
 
 <template>
   <div v-if="!loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
-  <main v-else class="h-full w-full pt-8 mx-auto">
-    <div class="flex flex-col gap-10 pb-6">
-      <div v-if="myTeam.player1" class="flex flex-col w-full justify-center items-center mx-auto gap-4">
-        <h1 class="page-title">Your Team</h1>
-        <div class="flex flex-row gap-4">
-        </div>
+  <main v-else class="max-w-5xl h-full w-full pt-8 mx-auto p-3">
+    <div class="flex flex-col gap-10 pb-6 items-center w-full">
+      <div v-if="myTeam.player1" class="flex flex-col max-w-md w-full justify-center items-center mx-auto gap-4">
+        <h1 class="font-extrabold text-5xl w-full">YOUR TEAM</h1>
         <TeamComponent :team="myTeam" :seed="getTeamSeed(myTeam)" @on-edit="fetchData"/>
       </div>
 
-      <h1 class="page-title">Teams</h1>
-      <div class="flex flex-wrap justify-center gap-4">
+      <div v-if="currentTab == 'teams'" class="grid lg:grid-cols-2 justify-center gap-4">
+        <div class="col-span-1 lg:col-span-2 flex flex-row">
+          <h1 class="font-extrabold text-5xl w-full">TEAM LIST</h1>
+          <div class="flex items-center justify-center pr-6">
+            <button @click="currentTab = 'groups'">
+              <div class="left-diamond"></div>
+              <div class="right-diamond"></div>
+              <span>GROUP LIST</span>
+            </button>
+          </div>
+        </div>
         <TeamComponent v-for="team in sortedTeams" :key="team.name" :team="team" :seed="getTeamSeed(team)"/>
+      </div>
+
+      <div v-else class="grid lg:grid-cols-2 justify-center gap-4">
+        <div class="col-span-1 lg:col-span-2 flex flex-row">
+          <h1 class="font-extrabold text-5xl w-full">GROUPS</h1>
+          <div class="flex items-center justify-center pr-6">
+            <button @click="currentTab = 'teams'">
+              <div class="left-diamond"></div>
+              <div class="right-diamond"></div>
+              <span>TEAM LIST</span>
+            </button>
+          </div>
+        </div>
+        <GroupComponent :group="'A'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'B'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'C'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'D'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'E'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'F'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'G'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'H'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
       </div>
     </div>
   </main>
@@ -131,34 +162,38 @@ export default {
 
 <style scoped lang="scss">
 
-.page-title {
-  text-align: center;
-  font-size: 2rem;
-  line-height: 2rem;
-  font-weight: 700;
+.left-diamond {
+  position: absolute;
+  background-color: white;
+  aspect-ratio: 1/1;
+  height: 100%;
+
+  top: 50%;
+  left: -12.5%;
+  transform: translate(0, -50%) rotate(45deg) scale(0.71);
+}
+
+.right-diamond {
+  position: absolute;
+  background-color: white;
+  aspect-ratio: 1/1;
+  height: 100%;
+
+  top: 50%;
+  right: -12.5%;
+  transform: translate(0, -50%) rotate(45deg) scale(0.71);
 }
 
 button {
-  padding-left: 12px;
-  padding-right: 12px;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  width: 10rem;
+  height: 2.5rem;
+  color: black;
+  background-color:white;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: transparent;
-  border: 1px solid #849591;
-  border-radius: 3px;
-  color:#849591;
-  font-weight: 500;
-
-  &:hover {
-      cursor: pointer;
-      background-color: #849591;
-      color: white;
-  }
+  transition: 0.1s ease-in;
 }
 
+button:hover {
+  filter: brightness(0.8);
+}
 </style>

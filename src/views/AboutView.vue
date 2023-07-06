@@ -161,16 +161,6 @@
             <li>Failed scores <b>do not</b> count. This is to encourage players to take NoFail on FreeMod maps.</li>
           </ol>
         </div>
-        <div>
-          <h1>Late Penalties</h1>
-          <ol>
-            <li>You are not allowed to play if there are not enough players to field a full team (you can just play the match for fun if your ref doesn’t mind).	</li>
-            <li>Less than 5 minutes: No penalty.</li>
-            <li>5-10 minutes: Warmup revoked.</li>
-            <li>10-15 minutes: Opposing team chooses whether to pick first or ban first.</li>
-            <li>15+ minutes: Walkover.</li>
-          </ol>
-        </div>
       </div>
 
       <div class="info-header">

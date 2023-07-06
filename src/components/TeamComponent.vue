@@ -288,6 +288,29 @@ export default {
 <style scoped lang="scss">
 .team {
 
+    button {
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background-color: transparent;
+        border: 1px solid #849591;
+        border-radius: 3px;
+        color:#849591;
+        font-weight: 500;
+
+        &:hover {
+            cursor: pointer;
+            background-color: #849591;
+            color: white;
+        }
+    }
+
     .submit-button {
         padding-left: 12px;
         padding-right: 12px;

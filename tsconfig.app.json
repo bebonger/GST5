@@ -5,6 +5,11 @@
   "compilerOptions": {
     "composite": true,
     "baseUrl": ".",
+    "target": "esnext",
+    "lib": [ "esnext", "DOM" ],
+    "module": "esnext",
+    "noImplicitAny": false,
+    "allowJs": true,
     "paths": {
       "@/*": ["./src/*"]
     }

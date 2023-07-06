@@ -23,6 +23,16 @@ const router = createRouter({
       component: () => import('../views/TeamsView.vue')
     },
     {
+      path: '/mappool',
+      name: 'mappool',
+      component: () => import('../views/MappoolView.vue')
+    },
+    {
+      path: '/schedules',
+      name: 'schedules',
+      component: () => import('../views/SchedulesView.vue')
+    },
+    {
       path: '/admin',
       name: 'admin',
       component: () => import('../views/AdminView.vue')

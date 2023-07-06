@@ -75,6 +75,8 @@ export default {
             <ul class="flex items-center pl-16">
                 <li><RouterLink class="link" :to="{name: 'info'}">INFORMATION</RouterLink></li>
                 <li><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
+                <li><RouterLink class="link" :to="{name: 'mappool'}">MAPPOOL</RouterLink></li>
+                <li><RouterLink class="link" :to="{name: 'schedules'}">SCHEDULES</RouterLink></li>
                 <li v-if="useUserDataStore().IsAdmin"><RouterLink class="link" :to="{name: 'admin'}">ADMIN</RouterLink></li>
             </ul>
             <div class="flex ml-auto justify-center items-center">
