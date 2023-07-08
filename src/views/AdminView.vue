@@ -16,6 +16,7 @@ export default {
                     id: null as string | unknown,
                     selectedStage: MatchStage.GroupStage,
                     selectedMod: PoolMod.NM,
+                    ez_mult: null as number | unknown,
                     slot: 1
                 },
                 remove: {
@@ -37,7 +38,9 @@ export default {
                 },
                 edit: {
                     id: null as string | unknown,
-                    schedule: null as string | unknown
+                    date: null as string | unknown,
+                    time: null as string | unknown,
+                    link: null as string | unknown,
                 }
             },
             teams: {
@@ -65,6 +68,7 @@ export default {
                 id: Number(this.mappool.insert.id),
                 stage: this.mappool.insert.selectedStage,
                 mod: this.mappool.insert.selectedMod,
+                ez_mult: Number(this.mappool.insert.ez_mult),
                 slot: Number(this.mappool.insert.slot)
             });
             if (res.data.error) {
@@ -72,6 +76,8 @@ export default {
             } else if (res.data.success) {
                 this.$toast.success(res.data.success);
             }
+
+            this.mappool.insert.ez_mult = null;
         },
         async removeMap() {
             const res = await this.$http.post("/api/admin/mappool/remove", {
@@ -108,10 +114,22 @@ export default {
                 this.$toast.success(res.data.success);
             }
         },
-        async editMatch() {
+        async editSchedule() {
             const res = await this.$http.post("/api/admin/match/edit", {
                 id: this.matches.edit.id,
-                schedule: this.matches.edit.schedule
+                date: this.matches.edit.date,
+                time: this.matches.edit.time,
+            });
+            if (res.data.error) {
+                this.$toast.error(res.data.error);
+            } else if (res.data.success) {
+                this.$toast.success(res.data.success);
+            }
+        },
+        async editLink() {
+            const res = await this.$http.post("/api/admin/match/edit", {
+                id: this.matches.edit.id,
+                mp_link: this.matches.edit.link,
             });
             if (res.data.error) {
                 this.$toast.error(res.data.error);
@@ -173,6 +191,10 @@ export default {
                         <div class="flex flex-row gap-2 items-center">
                             <p>Slot</p>
                             <input type="text" v-model="mappool.insert.slot" class="w-full"/>  
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>EZ Multiplier</p>
+                            <input type="text" v-model="mappool.insert.ez_mult" class="flex-1"/>  
                         </div>
                         <button @click="insertMap">Insert</button>
                     </div>
@@ -264,7 +286,7 @@ export default {
                 </div>
 
                 <div class="flex flex-col items-center gap-1">
-                    <p class="text-xl">Edit Match</p>
+                    <p class="text-xl">Edit Schedule</p>
                     <div class="flex flex-col gap-2">
                         <div class="flex flex-row gap-2 items-center">
                             <p>Match ID</p>
@@ -272,9 +294,27 @@ export default {
                         </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>Date</p>
-                            <input type="text" v-model="matches.edit.schedule" class="flex-1"/>  
+                            <input type="date" v-model="matches.edit.date" class="flex-1"/>  
                         </div>
-                        <button @click="editMatch">Edit</button>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Time</p>
+                            <input type="time" v-model="matches.edit.time" class="flex-1"/>  
+                        </div>
+                        <button @click="editSchedule">Edit</button>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                    <p class="text-xl">Edit MP Link</p>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Match ID</p>
+                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>MP Link</p>
+                            <input type="text" v-model="matches.edit.link" class="flex-1"/>  
+                        </div>
+                        <button @click="editLink">Edit</button>
                     </div>
                 </div>
             </div>
@@ -305,6 +345,7 @@ export default {
         border: 1px solid white;
         padding-left: 6px;
         padding-right: 6px;
+        color-scheme: dark;
     }
 
     p {

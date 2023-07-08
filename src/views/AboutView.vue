@@ -300,6 +300,35 @@
                 <p>Zelq</p>
               </a>
             </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/2439822" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/2439822" class="h-12 rounded-lg" loading="lazy">
+                <p>Rtyzen</p>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h1>Poolers</h1>
+          <ul class="flex flex-wrap justify-start items-start">
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/8301957" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/8301957" class="h-12 rounded-lg" loading="lazy">
+                <p>_gt</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/5447609" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/5447609" class="h-12 rounded-lg" loading="lazy">
+                <p>Demonical</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/10722794" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/10722794" class="h-12 rounded-lg" loading="lazy">
+                <p>Inquisitives</p>
+              </a>
+            </li>
           </ul>
         </div>
         <div>
@@ -321,6 +350,24 @@
               <a href="https://osu.ppy.sh/u/10722794" class="flex grow gap-2 items-center p-2 rounded-lg">
                 <img src="https://a.ppy.sh/10722794" class="h-12 rounded-lg" loading="lazy">
                 <p>Inquisitives</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/10178187" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/10178187" class="h-12 rounded-lg" loading="lazy">
+                <p>FaithInOsu</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/9313951" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/9313951" class="h-12 rounded-lg" loading="lazy">
+                <p>Tsuwagi</p>
+              </a>
+            </li>
+            <li class="flex xl:basis-1/4">
+              <a href="https://osu.ppy.sh/u/11198996" class="flex grow gap-2 items-center p-2 rounded-lg">
+                <img src="https://a.ppy.sh/11198996" class="h-12 rounded-lg" loading="lazy">
+                <p>A21</p>
               </a>
             </li>
           </ul>

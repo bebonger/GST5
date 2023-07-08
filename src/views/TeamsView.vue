@@ -147,14 +147,14 @@ export default {
             </button>
           </div>
         </div>
-        <GroupComponent :group="'A'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'B'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'C'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'D'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'E'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'F'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'G'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
-        <GroupComponent :group="'H'" :data="{ teams: {A: '', B: '', C: '', D: '', E: ''}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'A'" :data="{ teams: {A: 'bronseele kiss', B: 'horrible kids', C: '2 goofballs', D: 'yippee', E: 'arigato sumimasen'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'B'" :data="{ teams: {A: 'we go maimai', B: 'mashallah 兄弟', C: ':nerd:', D: 'rice', E: 'kanye west'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'C'" :data="{ teams: {A: 'KBBQ', B: 'PAP', C: 'pong xian', D: 'Baechuu osu pov', E: 'Robed Manifestion'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'D'" :data="{ teams: {A: 'Soba Noodles', B: 'sacabambaspis', C: 'Team 1912', D: 'Stormtrooper Aim', E: 'idiot of the week'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'E'" :data="{ teams: {A: 'pp ranchers', B: 'S U I P I S S', C: 'Glory Days', D: 'realmsniper', E: 'wah idk eh'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'F'" :data="{ teams: {A: 'LOSER', B: 'eyjafjallajökull', C: 'HOOOG RIDAAAR', D: 'bana the carrot', E: 'Hoshinoumi Academy'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'G'" :data="{ teams: {A: 'Tharman', B: 'chef', C: 'RyanGoBangGST', D: 'Pong!', E: 'gooni'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
+        <GroupComponent :group="'H'" :data="{ teams: {A: 'MekeB01', B: 'temporary name', C: 'bump', D: 'Mak Aku Pelacho', E: 'Ayase Enjoyer'}, scores: {A: [], B: [], C: [], D: [], E: []} }"/>
       </div>
     </div>
   </main>

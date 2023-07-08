@@ -70,7 +70,7 @@ export default {
                     <div class="right-diamond"></div>
                     <span>SHEET</span>
                 </a>
-                <button class="link-button ml-auto pl-6">
+                <a class="link-button ml-auto pl-6 flex items-center justify-center" href="https://drive.google.com/drive/folders/1ww2pSRkgFbEPyQ2B2DRMXmU0zbdX_Qvz?usp=drive_link">
                     <div class="left-diamond flex items-center justify-center">
                         <div class="-rotate-45">
                             <svg width="24" height="24" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +81,7 @@ export default {
                     </div>
                     <div class="right-diamond"></div>
                     <span>MAPPACK</span>
-                </button>
+                </a>
             </div>
         </div>
         <div class="xl:absolute xl:left-0 w-full xl:w-0">

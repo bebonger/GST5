@@ -45,7 +45,7 @@ export default {
 
         checkScreen() {
             this.windowWidth = window.innerWidth;
-            if (this.windowWidth <= 1024) {
+            if (this.windowWidth <= 1536) {
                 this.mobile = true;
                 return;
             }
@@ -99,6 +99,8 @@ export default {
                     <li class="flex items-center"><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
                     <li class="flex items-center"><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
                     <li class="flex items-center"><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
+                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'mappool'}">MAPPOOL</RouterLink></li>
+                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'schedules'}">SCHEDULES</RouterLink></li>
                     <li class="flex items-center w-full overflow-h justify-center"><UserInfoComponent/></li>
                 </ul>
             </transition>
@@ -214,7 +216,7 @@ header {
 
 }
 
-@media (max-width: 64rem) {
+@media (max-width: 92rem) {
     
     ul {
         padding: 0px;
