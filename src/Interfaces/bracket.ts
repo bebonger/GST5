@@ -23,7 +23,9 @@ export interface MatchInfo {
         blueTeamScore: number,
     },
     mp_link: string
+    referee: string,
 }
+
 export interface GroupInfo {
     groupID: GroupID;
     seedA: TeamInfo | null,

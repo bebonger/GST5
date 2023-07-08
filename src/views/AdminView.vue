@@ -41,6 +41,7 @@ export default {
                     date: null as string | unknown,
                     time: null as string | unknown,
                     link: null as string | unknown,
+                    referee: null as string | unknown,
                 }
             },
             teams: {
@@ -130,6 +131,17 @@ export default {
             const res = await this.$http.post("/api/admin/match/edit", {
                 id: this.matches.edit.id,
                 mp_link: this.matches.edit.link,
+            });
+            if (res.data.error) {
+                this.$toast.error(res.data.error);
+            } else if (res.data.success) {
+                this.$toast.success(res.data.success);
+            }
+        },
+        async editRef() {
+            const res = await this.$http.post("/api/admin/match/edit", {
+                id: this.matches.edit.id,
+                referee: this.matches.edit.referee,
             });
             if (res.data.error) {
                 this.$toast.error(res.data.error);
@@ -315,6 +327,20 @@ export default {
                             <input type="text" v-model="matches.edit.link" class="flex-1"/>  
                         </div>
                         <button @click="editLink">Edit</button>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                    <p class="text-xl">Edit Referee</p>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Match ID</p>
+                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Referee</p>
+                            <input type="text" v-model="matches.edit.referee" class="flex-1"/>  
+                        </div>
+                        <button @click="editRef">Edit</button>
                     </div>
                 </div>
             </div>
