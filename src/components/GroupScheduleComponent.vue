@@ -54,8 +54,8 @@ export default {
             </tr>
             <tr v-for="schedule in schedules" :key="schedule.matchID">
                 <td class="truncate-text">{{ schedule.matchID }}</td>
-                <td class="truncate-text">{{ schedule.schedule != null ? getDateString((schedule.schedule as Date)?.toString()) : "" }}</td>
-                <td class="truncate-text">{{ schedule.schedule != null ? getTimeString((schedule.schedule as Date)?.toString()) : "" }}</td>
+                <td class="truncate-text">{{ schedule.schedule != null ? schedule.schedule.date : "" }}</td>
+                <td class="truncate-text">{{ schedule.schedule != null ? schedule.schedule.time : "" }}</td>
                 <td class="truncate-text">{{ schedule.redTeam.name }}</td>
                 <td class="w-[1%]">{{ schedule.result.redTeamScore }} - {{ schedule.result.blueTeamScore }}</td>
                 <td class="truncate-text">{{ schedule.blueTeam.name }}</td>

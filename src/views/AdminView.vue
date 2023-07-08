@@ -294,11 +294,11 @@ export default {
                         </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>Date</p>
-                            <input type="date" v-model="matches.edit.date" class="flex-1"/>  
+                            <input type="text" v-model="matches.edit.date" class="flex-1"/>  
                         </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>Time</p>
-                            <input type="time" v-model="matches.edit.time" class="flex-1"/>  
+                            <input type="text" v-model="matches.edit.time" class="flex-1"/>  
                         </div>
                         <button @click="editSchedule">Edit</button>
                     </div>

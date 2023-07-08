@@ -14,14 +14,16 @@ export interface MatchInfo {
     stage: MatchStage,
     redTeam: TeamInfo
     blueTeam: TeamInfo
-    schedule: Date | null,
+    schedule: {
+        date: string,
+        time: string,
+    } | null,
     result: {
         redTeamScore: number,
         blueTeamScore: number,
     },
     mp_link: string
 }
-
 export interface GroupInfo {
     groupID: GroupID;
     seedA: TeamInfo | null,
