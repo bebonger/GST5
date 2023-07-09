@@ -19,6 +19,9 @@ export const useUserDataStore = defineStore('userData', ({
         },
         IsAdmin: (state) => {
             return !!state.user?.osu && state.user.staff.headStaff;
+        },
+        IsStaff: (state) => {
+            return !!state.user?.osu && state.user.staff.staff;
         }
     },
     actions: {

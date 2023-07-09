@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useUserDataStore } from "../stores/userData";
 import { CDropdown, CDropdownToggle, CDropdownMenu, CDropdownItem } from '@coreui/vue';
-import { MatchStage } from "@/Interfaces/bracket";
+import { MatchStage, type MatchInfo } from "@/Interfaces/bracket";
 </script>
 
 <script lang="ts">
@@ -26,6 +26,8 @@ export default {
                 }
             },
             matches: {
+                loaded: false,
+                data: [] as MatchInfo[],
                 insert: {
                     id: null as string | unknown,
                     selectedStage: MatchStage.GroupStage,
@@ -34,10 +36,12 @@ export default {
 
                 },
                 remove: {
+                    selectedStage: MatchStage.GroupStage,
                     id: null as string | unknown,
                 },
                 edit: {
                     id: null as string | unknown,
+                    selectedStage: MatchStage.GroupStage,
                     date: null as string | unknown,
                     time: null as string | unknown,
                     link: null as string | unknown,
@@ -58,6 +62,7 @@ export default {
         // watch the params of the route to fetch the data again
         this.$watch(() => this.$route.params, () => {
             this.fetchTeams();
+            this.fetchMatches();
         }, 
         // fetch the data when the view is created and the data is
         // already being observed
@@ -108,6 +113,7 @@ export default {
             } else if (res.data.success) {
                 this.$toast.success(res.data.success);
             }
+            this.fetchMatches();
         },
         async removeMatch() {
             const res = await this.$http.post("/api/admin/match/remove", {
@@ -118,44 +124,23 @@ export default {
             } else if (res.data.success) {
                 this.$toast.success(res.data.success);
             }
+            this.fetchMatches();
         },
-        async editSchedule() {
-            const res = await this.$http.post("/api/admin/match/edit", {
-                id: this.matches.edit.id,
-                date: this.matches.edit.date,
-                time: this.matches.edit.time,
-            });
-            if (res.data.error) {
-                this.$toast.error(res.data.error);
-            } else if (res.data.success) {
-                this.$toast.success(res.data.success);
-            }
+        selectMatchToEdit(match: MatchInfo) {
+            this.matches.edit.id = match.matchID;
+            this.matches.edit.date = match.schedule?.date;
+            this.matches.edit.time = match.schedule?.time;
+            this.matches.edit.referee = match.referee;
+            this.matches.edit.scores.red = match.result.redTeamScore;
+            this.matches.edit.scores.blue = match.result.blueTeamScore;
         },
-        async editLink() {
+        async editMatch() {
             const res = await this.$http.post("/api/admin/match/edit", {
                 id: this.matches.edit.id,
                 mp_link: this.matches.edit.link,
-            });
-            if (res.data.error) {
-                this.$toast.error(res.data.error);
-            } else if (res.data.success) {
-                this.$toast.success(res.data.success);
-            }
-        },
-        async editRef() {
-            const res = await this.$http.post("/api/admin/match/edit", {
-                id: this.matches.edit.id,
                 referee: this.matches.edit.referee,
-            });
-            if (res.data.error) {
-                this.$toast.error(res.data.error);
-            } else if (res.data.success) {
-                this.$toast.success(res.data.success);
-            }
-        },
-        async editScore() {
-            const res = await this.$http.post("/api/admin/match/edit", {
-                id: this.matches.edit.id,
+                date: this.matches.edit.date,
+                time: this.matches.edit.time,
                 scores: this.matches.edit.scores,
             });
             if (res.data.error) {
@@ -163,6 +148,7 @@ export default {
             } else if (res.data.success) {
                 this.$toast.success(res.data.success);
             }
+            this.fetchMatches();
         },
         async fetchTeams() {
             try {
@@ -173,21 +159,32 @@ export default {
             catch (err) {
                 console.error(err);
             }
+        },
+        async fetchMatches() {
+            try {
+                this.matches.loaded = false;
+                const response = await this.$http.get("/api/matches");
+                this.matches.data = response.data;
+                this.matches.loaded = true;
+            }
+            catch (err) {
+                console.error(err);
+            }
       },
     }
 }
 </script>
 
 <template>
-    <main v-if="useUserDataStore().IsAdmin" class="flex flex-wrap w-full gap-3 items-center justify-center p-3">
+    <main v-if="useUserDataStore().IsAdmin || useUserDataStore().IsStaff" class="flex flex-wrap w-full gap-3 items-center justify-center p-3">
         <!-- Users -->
-        <div class="admin-category min-w-md p-10 flex flex-col justify-center items-center gap-2">
+        <div v-if="useUserDataStore().IsAdmin" class="admin-category min-w-md p-10 flex flex-col justify-center items-center gap-2">
             <p class="font-bold text-4xl">Users</p>
             <button @click="refreshUsers" class="w-full">Refresh Users</button>
         </div> 
 
         <!-- Mappool -->
-        <div class="admin-category min-w-md p-10 flex flex-col justify-center items-center gap-4">
+        <div v-if="useUserDataStore().IsAdmin" class="admin-category min-w-md p-10 flex flex-col justify-center items-center gap-4">
             <p class="font-bold text-4xl">Mappool</p>
             <div class="flex flex-wrap gap-4 justify-center">
                 <div class="flex flex-col items-center justify-center gap-1">
@@ -261,9 +258,9 @@ export default {
         <!-- Matches -->
         <div class="admin-category min-w-md p-10 flex flex-col justify-center items-center gap-4">
             <p class="font-bold text-4xl">Matches</p>
-            <div v-if="!teams.loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
+            <div v-if="!teams.loaded && !matches.loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
             <div v-else class="flex flex-wrap gap-4 justify-center">
-                <div class="flex flex-col items-center justify-center gap-1">
+                <div v-if="useUserDataStore().IsAdmin" class="flex flex-col items-center gap-1">
                     <p class="text-xl">Insert Match</p>
                     <div class="flex flex-col gap-2">
                         <div class="flex flex-row gap-2 items-center">
@@ -283,7 +280,7 @@ export default {
                             <p>Red Team</p>
                             <CDropdown class="flex-1">
                                 <CDropdownToggle color="dark">{{ matches.insert.team1 }}</CDropdownToggle>
-                                <CDropdownMenu class="w-full">
+                                <CDropdownMenu class="w-full h-48 overflow-auto">
                                     <CDropdownItem v-for="team in teams.data" :key="team" @click="() => { matches.insert.team1 = (team as TeamInfo).name }">{{ (team as TeamInfo).name }}</CDropdownItem>
                                 </CDropdownMenu>
                             </CDropdown>
@@ -292,7 +289,7 @@ export default {
                             <p>Blue Team</p>
                             <CDropdown class="flex-1">
                                 <CDropdownToggle color="dark">{{ matches.insert.team2 }}</CDropdownToggle>
-                                <CDropdownMenu class="w-full">
+                                <CDropdownMenu class="w-full h-48 overflow-auto">
                                     <CDropdownItem v-for="team in teams.data" :key="team" @click="() => { matches.insert.team2 = (team as TeamInfo).name }">{{ (team as TeamInfo).name }}</CDropdownItem>
                                 </CDropdownMenu>
                             </CDropdown>
@@ -301,79 +298,85 @@ export default {
                     </div>
                 </div>
 
-                <div class="flex flex-col items-center gap-1">
+                <div v-if="useUserDataStore().IsAdmin" class="flex flex-col items-center gap-1">
                     <p class="text-xl">Remove match</p>
-                    <div class="flex flex-col gap-2">
+                    <div class="flex flex-col gap-2 w-full">
+                        <div class="flex flex-row gap-2 items-center w-full">
+                            <p>Stage</p>
+                            <CDropdown class="flex-1">
+                                <CDropdownToggle color="dark">{{ matches.remove.selectedStage }}</CDropdownToggle>
+                                <CDropdownMenu class="w-full">
+                                    <CDropdownItem v-for="stage in Object.keys(MatchStage)" :key="stage" @click="() => { matches.remove.selectedStage = MatchStage[stage as keyof typeof MatchStage] }">{{ stage }}</CDropdownItem>
+                                </CDropdownMenu>
+                            </CDropdown>
+                        </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>Match ID</p>
-                            <input type="text" v-model="matches.remove.id" class="flex-1"/>  
+                            <CDropdown class="flex-1">
+                                <CDropdownToggle color="dark">{{ matches.remove.id }}</CDropdownToggle>
+                                <CDropdownMenu class="w-96 h-48 overflow-auto">
+                                    <CDropdownItem v-for="match in matches.data[matches.edit.selectedStage]" :key="match" @click="() => { matches.remove.id = (match as MatchInfo).matchID }">{{ (match as MatchInfo).matchID }} - {{ (match as MatchInfo).redTeam.name }} vs {{ (match as MatchInfo).blueTeam.name }}</CDropdownItem>
+                                </CDropdownMenu>
+                            </CDropdown>
                         </div>
                         <button @click="removeMatch">Remove</button>
                     </div>
                 </div>
 
                 <div class="flex flex-col items-center gap-1">
-                    <p class="text-xl">Edit Schedule</p>
+                    <p class="text-xl">Edit Match</p>
                     <div class="flex flex-col gap-2">
+                        <div class="flex flex-row gap-2 items-center w-full">
+                            <p>Stage</p>
+                            <CDropdown class="flex-1">
+                                <CDropdownToggle color="dark">{{ matches.edit.selectedStage }}</CDropdownToggle>
+                                <CDropdownMenu class="w-full">
+                                    <CDropdownItem v-for="stage in Object.keys(MatchStage)" :key="stage" @click="() => { matches.edit.selectedStage = MatchStage[stage as keyof typeof MatchStage] }">{{ stage }}</CDropdownItem>
+                                </CDropdownMenu>
+                            </CDropdown>
+                        </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>Match ID</p>
-                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
-                        </div>
-                        <div class="flex flex-row gap-2 items-center">
-                            <p>Date</p>
-                            <input type="text" v-model="matches.edit.date" class="flex-1"/>  
-                        </div>
-                        <div class="flex flex-row gap-2 items-center">
-                            <p>Time</p>
-                            <input type="text" v-model="matches.edit.time" class="flex-1"/>  
-                        </div>
-                        <button @click="editSchedule">Edit</button>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center gap-1">
-                    <p class="text-xl">Edit MP Link</p>
-                    <div class="flex flex-col gap-2">
-                        <div class="flex flex-row gap-2 items-center">
-                            <p>Match ID</p>
-                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
+                            <CDropdown class="flex-1">
+                                <CDropdownToggle color="dark">{{ matches.edit.id }}</CDropdownToggle>
+                                <CDropdownMenu class="w-96">
+                                    <CDropdownItem v-for="match in matches.data[matches.edit.selectedStage]" :key="match" @click="() => selectMatchToEdit(match)">{{ (match as MatchInfo).matchID }} - {{ (match as MatchInfo).redTeam.name }} vs {{ (match as MatchInfo).blueTeam.name }}</CDropdownItem>
+                                </CDropdownMenu>
+                            </CDropdown>
+                            
                         </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>MP Link</p>
                             <input type="text" v-model="matches.edit.link" class="flex-1"/>  
                         </div>
-                        <button @click="editLink">Edit</button>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center gap-1">
-                    <p class="text-xl">Edit Referee</p>
-                    <div class="flex flex-col gap-2">
+
+                        <br>
+                        <h1 class="font-extrabold text-2xl">Schedules</h1>
                         <div class="flex flex-row gap-2 items-center">
-                            <p>Match ID</p>
-                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
+                            <p>Date</p>
+                            <input type="date" v-model="matches.edit.date" class="flex-1"/>  
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Time</p>
+                            <input type="time" v-model="matches.edit.time" class="flex-1"/>  
                         </div>
                         <div class="flex flex-row gap-2 items-center">
                             <p>Referee</p>
                             <input type="text" v-model="matches.edit.referee" class="flex-1"/>  
                         </div>
-                        <button @click="editRef">Edit</button>
-                    </div>
-                </div>
-                <div class="flex flex-col items-center gap-1">
-                    <p class="text-xl">Edit Score</p>
-                    <div class="flex flex-col gap-2">
+
+                        <br>
+                        <h1 class="font-extrabold text-2xl">Scores</h1>
+
                         <div class="flex flex-row gap-2 items-center">
-                            <p>Match ID</p>
-                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
-                        </div>
-                        <div class="flex flex-row gap-2 items-center">
-                            <p>Red</p>
+                            <p>Red Score</p>
                             <input type="text" v-model="matches.edit.scores.red" class="flex-1"/>  
                         </div>
                         <div class="flex flex-row gap-2 items-center">
-                            <p>Blue</p>
+                            <p>Blue Score</p>
                             <input type="text" v-model="matches.edit.scores.blue" class="flex-1"/>  
                         </div>
-                        <button @click="editScore">Edit</button>
+                        <button @click="editMatch">Edit</button>
                     </div>
                 </div>
             </div>

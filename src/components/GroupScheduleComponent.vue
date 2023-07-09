@@ -55,7 +55,7 @@ export default {
             </tr>
             <tr v-for="schedule in schedules" :key="schedule.matchID">
                 <td class="truncate-text">{{ schedule.matchID }}</td>
-                <td class="truncate-text">{{ schedule.schedule != null ? schedule.schedule.date : "" }}</td>
+                <td class="truncate-text">{{ schedule.schedule != null ? getDateString(schedule.schedule.date) : "" }}</td>
                 <td class="truncate-text">{{ schedule.schedule != null ? schedule.schedule.time : "" }}</td>
                 <td class="truncate-text" :class="{'winner': schedule.result.redTeamScore > schedule.result.blueTeamScore, 'loser': schedule.result.redTeamScore < schedule.result.blueTeamScore}">{{ schedule.redTeam.name }}</td>
                 <td class="w-[1%]">{{ schedule.result.redTeamScore }} - {{ schedule.result.blueTeamScore }}</td>
@@ -76,6 +76,11 @@ export default {
 </template>
 
 <style scoped lang="scss">
+
+.team-schedule-info {
+
+}
+
 .winner {
     background-color: #6bb1a1;
 }

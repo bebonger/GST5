@@ -141,7 +141,7 @@
                 <li>Warmups must be shorter than or equal to <b>210 seconds</b> or <b>3 minutes and 30 seconds</b> in drain time. They should also not be songs currently in the mappool.</li>
               </ol>
             </li>
-            <li>The winner of the roll gets <b>second ban and first pick</b>. Every round will have <b>2 bans</b>.</li>
+            <li>The winner of the roll gets <b>second ban and first pick</b>.</li>
             <li>Players are given <b>90 seconds</b> for every action (picking/banning). Failure in doing so will give the action to the opposing team instead.</li>
             <li>
               After a beatmap is selected, players are given <b>90 seconds</b> to ready up. A force-start may be done by the referee.
@@ -173,6 +173,7 @@
           <ol>
             <li>Matches will be <b>best of 7</b> (first to 4). </li>
             <li>The mappool structure is 4 NM / 2 HD / 2 HR / 2 DT / 2 FM / TB.</li>
+            <li>1 ban per team.</li>
             <li>The top 4 teams from each group will continue onto the Bracket Stage, with the top 2 starting in the Winners' Bracket and the next 2 starting in the Losers' Bracket.</li>
             <li>A team that places 1st in their group will face a team that places 2nd in their group. Similarly, a team that places 3rd in their group will face a team that places 4th in their group.</li>
             <li>Team placement within each group will be decided by <b>Match Wins</b>, followed by <b>Map Wins</b> and the teams' match result.</li>
@@ -184,6 +185,7 @@
           <ol>
             <li>Matches will be <b>best of 9</b> (first to 5). </li>
             <li>The mappool structure is 5 NM / 2 HD / 2 HR / 3 DT / 2 FM / TB.</li>
+            <li>1 ban per team.</li>
           </ol>
         </div>
         <div>
@@ -191,6 +193,7 @@
           <ol>
             <li>Matches will be <b>best of 11</b> (first to 6). </li>
             <li>The mappool structure is 5 NM / 3 HD / 3 HR / 3 DT / 3 FM / TB.</li>
+            <li>2 bans per team.</li>
           </ol>
         </div>
         <div>
@@ -198,6 +201,7 @@
           <ol>
             <li>Matches will be <b>best of 13</b> (first to 7). </li>
             <li>The mappool structure is 6 NM / 3 HD / 3 HR / 4 DT / 3 FM / TB.</li>
+            <li>2 bans per team.</li>
           </ol>
         </div>
         <div>
@@ -205,6 +209,7 @@
           <ol>
             <li>Matches will be <b>best of 13</b> (first to 7). </li>
             <li>The mappool structure is 6 NM / 3 HD / 3 HR / 4 DT / 3 FM / TB.</li>
+            <li>2 bans per team.</li>
           </ol>
         </div>
       </div>
