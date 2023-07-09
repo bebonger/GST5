@@ -340,7 +340,7 @@ export default {
                             <p>Match ID</p>
                             <CDropdown class="flex-1">
                                 <CDropdownToggle color="dark">{{ matches.edit.id }}</CDropdownToggle>
-                                <CDropdownMenu class="w-96">
+                                <CDropdownMenu class="w-96 h-96 overflow-auto">
                                     <CDropdownItem v-for="match in matches.data[matches.edit.selectedStage]" :key="match" @click="() => selectMatchToEdit(match)">{{ (match as MatchInfo).matchID }} - {{ (match as MatchInfo).redTeam.name }} vs {{ (match as MatchInfo).blueTeam.name }}</CDropdownItem>
                                 </CDropdownMenu>
                             </CDropdown>
