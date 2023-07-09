@@ -12,6 +12,7 @@ export default {
             error: null,
             schedules: {},
             currentStage: MatchStage.GroupStage,
+            sort:false,
 
             test: false
         };
@@ -76,6 +77,10 @@ export default {
                 </a>
             </div>
         </div>
+        <div class="w-full">
+            <input type="checkbox" v-model="sort" name="Sort by Time">
+            <label for="vehicle3"> Sort by Time</label>
+        </div>
         <div class="xl:absolute xl:left-0 w-full xl:w-0">
             <div class="xl:absolute xl:right-0 flex flex-row xl:flex-col gap-4 xl:m-4 xl:mt-16 transition-all">
                 <button v-for="stage in Object.keys(schedules)" :key="stage" class="tab-button diamond" :class="{'active': currentStage == stage}" @click="currentStage = (stage as MatchStage)"> 
@@ -88,45 +93,45 @@ export default {
         <div v-if="currentStage==MatchStage.GroupStage" class="flex flex-wrap w-full gap-y-4 pt-4">
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP A</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'A')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'A')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP B</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'B')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'B')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP C</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'C')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'C')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP D</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'D')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'D')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP E</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'E')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'E')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP F</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'F')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'F')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP G</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'G')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'G')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">GROUP H</h1>
-                <GroupScheduleComponent :schedules="getSchedules(MatchStage.GroupStage, 'H')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(MatchStage.GroupStage, 'H')"/>
             </div>
         </div>
         <div v-else class="flex flex-wrap w-full gap-y-4 pt-4">
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">WINNERS' BRACKET</h1>
-                <GroupScheduleComponent :schedules="getSchedules(currentStage, 'W')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, 'W')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <h1 class="text-2xl font-bold">LOSERS' BRACKET</h1>
-                <GroupScheduleComponent :schedules="getSchedules(currentStage, 'L')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, 'L')"/>
             </div>
         </div>
     </div>
