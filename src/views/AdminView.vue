@@ -128,6 +128,7 @@ export default {
         },
         selectMatchToEdit(match: MatchInfo) {
             this.matches.edit.id = match.matchID;
+            this.matches.edit.link = match.mp_link;
             this.matches.edit.date = match.schedule?.date;
             this.matches.edit.time = match.schedule?.time;
             this.matches.edit.referee = match.referee;
