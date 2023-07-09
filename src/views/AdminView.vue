@@ -42,6 +42,10 @@ export default {
                     time: null as string | unknown,
                     link: null as string | unknown,
                     referee: null as string | unknown,
+                    scores: {
+                        red: 0,
+                        blue: 0
+                    }
                 }
             },
             teams: {
@@ -142,6 +146,17 @@ export default {
             const res = await this.$http.post("/api/admin/match/edit", {
                 id: this.matches.edit.id,
                 referee: this.matches.edit.referee,
+            });
+            if (res.data.error) {
+                this.$toast.error(res.data.error);
+            } else if (res.data.success) {
+                this.$toast.success(res.data.success);
+            }
+        },
+        async editScore() {
+            const res = await this.$http.post("/api/admin/match/edit", {
+                id: this.matches.edit.id,
+                scores: this.matches.edit.scores,
             });
             if (res.data.error) {
                 this.$toast.error(res.data.error);
@@ -341,6 +356,24 @@ export default {
                             <input type="text" v-model="matches.edit.referee" class="flex-1"/>  
                         </div>
                         <button @click="editRef">Edit</button>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                    <p class="text-xl">Edit Score</p>
+                    <div class="flex flex-col gap-2">
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Match ID</p>
+                            <input type="text" v-model="matches.edit.id" class="flex-1"/>  
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Red</p>
+                            <input type="text" v-model="matches.edit.scores.red" class="flex-1"/>  
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <p>Blue</p>
+                            <input type="text" v-model="matches.edit.scores.blue" class="flex-1"/>  
+                        </div>
+                        <button @click="editScore">Edit</button>
                     </div>
                 </div>
             </div>
