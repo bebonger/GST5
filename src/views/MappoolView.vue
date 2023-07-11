@@ -30,7 +30,6 @@ export default {
             this.error = this.post = null;
             try {
                 const response = await this.$http.get("/api/mappool");
-                console.log(response.data["GS"]);
                 this.mappools = response.data;
                 this.loaded = true;
             }

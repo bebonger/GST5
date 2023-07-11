@@ -17,7 +17,6 @@ export default {
     mounted() {
         window.addEventListener("scroll", this.onScroll);  
         const resizeObserver = new ResizeObserver(entries => {
-            console.log('New Height: ' + entries[0].target.clientHeight);
             this.pageScrollHeight = entries[0].target.clientHeight;
             this.onScroll();
 
@@ -54,8 +53,6 @@ export default {
 
             e.preventDefault();
             e.stopPropagation();
-
-            console.log(e);
 
             window.scrollTo(0, dy);
         },
