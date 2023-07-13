@@ -59,7 +59,7 @@ export default {
 <template>
 <div v-if="!loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
 <main v-else class="h-full w-full pt-8 p-3 overflow-x-scroll">
-    <div class="w-[64rem] flex flex-col gap-4 pb-6 items-center w-full mx-auto">
+    <div class="w-[64rem] flex flex-col gap-4 pb-6 items-center mx-auto">
         <div class="flex flex-row w-full gap-8 items-center">
             <h1 class="font-extrabold text-5xl">{{ getStageName(currentStage) }}</h1>
             <div class="flex flex-wrap gap-y-2 gap-x-14 justify-center ml-auto pr-6">
