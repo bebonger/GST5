@@ -316,7 +316,7 @@ export default {
                             <CDropdown class="flex-1">
                                 <CDropdownToggle color="dark">{{ matches.remove.id }}</CDropdownToggle>
                                 <CDropdownMenu class="w-96 h-48 overflow-auto">
-                                    <CDropdownItem v-for="match in matches.data[matches.edit.selectedStage]" :key="match" @click="() => { matches.remove.id = (match as MatchInfo).matchID }">{{ (match as MatchInfo).matchID }} - {{ (match as MatchInfo).redTeam.name }} vs {{ (match as MatchInfo).blueTeam.name }}</CDropdownItem>
+                                    <CDropdownItem v-for="match in matches.data[matches.remove.selectedStage]" :key="match" @click="() => { matches.remove.id = (match as MatchInfo).matchID }">{{ (match as MatchInfo).matchID }} - {{ (match as MatchInfo).redTeam.name }} vs {{ (match as MatchInfo).blueTeam.name }}</CDropdownItem>
                                 </CDropdownMenu>
                             </CDropdown>
                         </div>
