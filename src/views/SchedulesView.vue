@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MatchStage, type MatchInfo } from '@/Interfaces/bracket';
+import { MatchStage, type SimpleMatchInfo } from '@/Interfaces/bracket';
 import GroupScheduleComponent from '@/components/GroupScheduleComponent.vue';
 </script>
 
@@ -47,9 +47,12 @@ export default {
             name = name.toUpperCase();       
             return name;
         },
-        getSchedules(stage: MatchStage, prefix: string): MatchInfo[] {
+        getSchedules(stage: MatchStage, prefix?: string | null, type?: string): SimpleMatchInfo[] {
             if (!this.schedules[stage]) return [];
-            return this.schedules[stage].filter((schedule) => schedule.matchID.startsWith(prefix));
+            if (prefix) return this.schedules[stage].filter((schedule) => schedule.matchID.startsWith(prefix));
+            if (type) return this.schedules[stage].filter((schedule) => schedule.matchType == type);
+
+            return [];
         }
     },
     components: { GroupScheduleComponent }
@@ -58,7 +61,7 @@ export default {
 
 <template>
 <div v-if="!loaded" class="flex w-full p-4 items-center justify-center"><div class="lds-dual-ring"></div></div>
-<main v-else class="h-full w-full pt-8 p-3 overflow-x-scroll">
+<main v-else class="min-h-screen w-full pt-8 p-3 overflow-x-auto">
     <div class="w-[64rem] flex flex-col gap-4 pb-6 items-center mx-auto">
         <div class="flex flex-row w-full gap-8 items-center">
             <h1 class="font-extrabold text-5xl">{{ getStageName(currentStage) }}</h1>
@@ -78,11 +81,13 @@ export default {
         </div>
         <div class="xl:absolute xl:left-0 w-full xl:w-0">
             <div class="xl:absolute xl:right-0 flex flex-row xl:flex-col gap-4 xl:m-4 xl:mt-16 transition-all">
-                <button v-for="stage in Object.keys(schedules)" :key="stage" class="tab-button diamond w-[52px]" :class="{'active': currentStage == stage}" @click="currentStage = (stage as MatchStage)"> 
-                    <div class="-rotate-45">
-                        <span class="text-xl font-semibold">{{ stage }}</span>
-                    </div>
-                </button>
+                <div v-for="stage in Object.keys(schedules)" :key="stage" >
+                    <button v-if="schedules[stage][0].redTeam != ''" class="tab-button diamond w-[52px]" :class="{'active': currentStage == stage}" @click="currentStage = (stage as MatchStage)"> 
+                        <div class="-rotate-45">
+                            <span class="text-xl font-semibold">{{ stage }}</span>
+                        </div>
+                    </button>
+                </div>
             </div>
         </div>
         <div v-if="currentStage==MatchStage.GroupStage" class="flex flex-wrap w-full gap-y-4 pt-4">
@@ -161,16 +166,37 @@ export default {
             <div class="w-full flex flex-col justify-center gap-2">
                 <div class="flex flex-row items-center gap-3">
                     <div class="diamond w-[1rem] bg-[#F49089]"></div>
-                    <h1 class="text-2xl font-bold">WINNERS' BRACKET</h1>
+                    <h1 class="text-2xl font-bold">LOSERS' BRACKET</h1>
+                    
+                    <p class="ml-auto text-lg font-semibold">SORT BY</p>
+                    <p class="text-xl">|</p>
+
+                    <div class="flex flex-row items-center gap-8">
+                        <div class="flex flex-row gap-2 items-center">
+                            <button class="diamond border-2 w-[1rem] transition-all" :class="{'bg-white': sort}" @click="sort=true"></button>
+                            <p class="text-lg font-semibold">TIME</p>
+                        </div>
+                        <div class="flex flex-row gap-2 items-center">
+                            <button class="diamond border-2 w-[1rem] transition-all" :class="{'bg-white': !sort}" @click="sort=false"></button>
+                            <p class="text-lg font-semibold">ID</p>
+                        </div>
+                    </div>
                 </div>
-                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, 'W')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, null, 'L')"/>
+            </div>
+            <div v-if="currentStage != MatchStage.RoundOf16" class="w-full flex flex-col justify-center gap-2">
+                <div class="flex flex-row items-center gap-3">
+                    <div class="diamond w-[1rem] bg-[#F49089]"></div>
+                    <h1 class="text-2xl font-bold">POTENTIALS</h1>
+                </div>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, null, 'P')"/>
             </div>
             <div class="w-full flex flex-col justify-center gap-2">
                 <div class="flex flex-row items-center gap-3">
                     <div class="diamond w-[1rem] bg-[#F49089]"></div>
-                    <h1 class="text-2xl font-bold">LOSERS' BRACKET</h1>
+                    <h1 class="text-2xl font-bold">WINNER'S BRACKET</h1>
                 </div>
-                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, 'L')"/>
+                <GroupScheduleComponent :sort="sort" :schedules="getSchedules(currentStage, null, 'W')"/>
             </div>
         </div>
     </div>

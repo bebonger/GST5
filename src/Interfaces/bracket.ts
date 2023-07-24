@@ -26,6 +26,24 @@ export interface MatchInfo {
     referee: string,
 }
 
+export interface SimpleMatchInfo {
+    matchID: string;
+    stage: MatchStage;
+    redTeam: string;
+    blueTeam: string;
+    schedule: {
+        date: string;
+        time: string;
+    } | null;
+    result: {
+        redTeamScore: number;
+        blueTeamScore: number;
+    },
+    matchType: string;
+    mp_link: string;
+    referee: string;
+}
+
 export interface GroupInfo {
     groupID: GroupID;
     seedA: TeamInfo | null,
