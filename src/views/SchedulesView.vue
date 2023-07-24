@@ -66,7 +66,7 @@ export default {
         <div class="flex flex-row w-full gap-8 items-center">
             <h1 class="font-extrabold text-5xl">{{ getStageName(currentStage) }}</h1>
             <div class="flex flex-wrap gap-y-2 gap-x-14 justify-center ml-auto pr-6">
-                <a class="link-button ml-auto pl-6 flex items-center justify-center" href='https://docs.google.com/spreadsheets/d/1EHBXBlY8J2Pbux-xb0oM-yQdxnJqIkIZuShX50TndBc'>
+                <a class="link-button ml-auto pl-6 flex items-center justify-center" href='https://docs.google.com/spreadsheets/d/1aBLU2lThefnwsR1wv2-UouePGOHenhBpIOk_4qBL6Cw'>
                     <div class="left-diamond flex items-center justify-center">
                         <div class="-rotate-45">
                             <svg width="24" height="24" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
