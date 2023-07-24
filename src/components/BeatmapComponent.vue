@@ -134,7 +134,7 @@ export default {
                 <p class="text-xs font-semibold" :style="`color: ${getModColourPalette(mapInfo.mod).main};`">OD</p>
                 <p class="text-xs font-semibold">{{ mapInfo.data.OD }}</p>
             </div>
-            <div v-if="mapInfo.mod == PoolMod.FM && mapInfo.data.ez_mult" class="basis-1/4 md:basis-1/3">
+            <div v-if="mapInfo.data.ez_mult" class="basis-1/4 md:basis-1/3">
                 <p class="text-xs font-semibold" :style="`color: ${getModColourPalette(mapInfo.mod).main};`">EZ</p>
                 <p class="text-xs font-semibold">{{mapInfo.data.ez_mult}}x</p>
             </div>

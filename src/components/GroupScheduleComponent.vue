@@ -1,17 +1,18 @@
 <script setup lang="ts">
-import type { MatchInfo } from '@/Interfaces/bracket';
+import type { SimpleMatchInfo } from '@/Interfaces/bracket';
 
 defineProps<{
-    schedules: MatchInfo[]
+    schedules: SimpleMatchInfo[]
     sort: boolean
 }>();
+
 </script>
 
 <script lang="ts">
 export default {
     data() {
         return {
-            sortedSchedules: [] as MatchInfo[]
+            sortedSchedules: [] as SimpleMatchInfo[]
         }
     },
     mounted() {
@@ -19,6 +20,7 @@ export default {
     },
     methods: {
         getDateString(date: string): string {
+            console.log(date);
             const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
             const monthsOfYear = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -39,7 +41,7 @@ export default {
             const timeString = `${hours}:${minutes}`;
             return timeString;
         },
-        sortByDate(): MatchInfo[] {
+        sortByDate(): SimpleMatchInfo[] {
             let sorted = this.schedules.slice();
 
             sorted.sort((a, b) => {
@@ -82,13 +84,13 @@ export default {
                     </svg>
                 </th>
             </tr>
-            <tr v-for="schedule in sortedSchedules" :key="schedule.matchID">
+            <tr v-for="schedule in sortByDate()" :key="schedule.matchID">
                 <td class="truncate-text">{{ schedule.matchID }}</td>
                 <td class="truncate-text">{{ schedule.schedule != null ? getDateString(schedule.schedule.date) : "" }}</td>
                 <td class="truncate-text">{{ schedule.schedule != null ? schedule.schedule.time : "" }}</td>
-                <td class="truncate-text" :class="{'winner': schedule.result.redTeamScore > schedule.result.blueTeamScore, 'loser': schedule.result.redTeamScore < schedule.result.blueTeamScore}">{{ schedule.redTeam.name }}</td>
+                <td class="truncate-text" :class="{'winner': schedule.result.redTeamScore > schedule.result.blueTeamScore, 'loser': schedule.result.redTeamScore < schedule.result.blueTeamScore}">{{ schedule.redTeam }}</td>
                 <td class="w-[1%]">{{ schedule.result.redTeamScore }} - {{ schedule.result.blueTeamScore }}</td>
-                <td class="truncate-text" :class="{'winner': schedule.result.blueTeamScore > schedule.result.redTeamScore, 'loser': schedule.result.redTeamScore > schedule.result.blueTeamScore}">{{ schedule.blueTeam.name }}</td>
+                <td class="truncate-text" :class="{'winner': schedule.result.blueTeamScore > schedule.result.redTeamScore, 'loser': schedule.result.redTeamScore > schedule.result.blueTeamScore}">{{ schedule.blueTeam }}</td>
                 <td class="truncate-text">{{ schedule.referee }}</td>
                 <td class="w-[4%]"><a v-if="schedule.mp_link" :href="schedule.mp_link"><svg class="block m-auto" width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.85184 6.86829C7.70218 6.86829 7.55252 6.80415 7.42424 6.69725C7.18907 6.46207 7.18907 6.09862 7.42424 5.86344L9.32705 3.96063C9.96845 3.31923 9.96845 2.29299 9.32705 1.6516C8.68566 1.0102 7.65942 1.0102 7.01803 1.6516L5.22211 3.44751C4.98694 3.68269 4.62348 3.68269 4.3883 3.44751C4.15312 3.21233 4.15312 2.84887 4.3883 2.61369L6.18421 0.817781C7.27458 -0.272594 9.0705 -0.272594 10.1823 0.817781C11.2726 1.90816 11.2726 3.70407 10.1823 4.81582L8.27944 6.71863C8.17254 6.82553 8.0015 6.86829 7.85184 6.86829Z" fill="white"/>
@@ -120,9 +122,9 @@ export default {
                 <td class="truncate-text">{{ schedule.matchID }}</td>
                 <td class="truncate-text">{{ schedule.schedule != null ? getDateString(schedule.schedule.date) : "" }}</td>
                 <td class="truncate-text">{{ schedule.schedule != null ? schedule.schedule.time : "" }}</td>
-                <td class="truncate-text" :class="{'winner': schedule.result.redTeamScore > schedule.result.blueTeamScore, 'loser': schedule.result.redTeamScore < schedule.result.blueTeamScore}">{{ schedule.redTeam.name }}</td>
+                <td class="truncate-text" :class="{'winner': schedule.result.redTeamScore > schedule.result.blueTeamScore, 'loser': schedule.result.redTeamScore < schedule.result.blueTeamScore}">{{ schedule.redTeam }}</td>
                 <td class="w-[1%]">{{ schedule.result.redTeamScore }} - {{ schedule.result.blueTeamScore }}</td>
-                <td class="truncate-text" :class="{'winner': schedule.result.blueTeamScore > schedule.result.redTeamScore, 'loser': schedule.result.redTeamScore > schedule.result.blueTeamScore}">{{ schedule.blueTeam.name }}</td>
+                <td class="truncate-text" :class="{'winner': schedule.result.blueTeamScore > schedule.result.redTeamScore, 'loser': schedule.result.redTeamScore > schedule.result.blueTeamScore}">{{ schedule.blueTeam }}</td>
                 <td class="truncate-text">{{ schedule.referee }}</td>
                 <td class="w-[4%]"><a v-if="schedule.mp_link" :href="schedule.mp_link"><svg class="block m-auto" width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.85184 6.86829C7.70218 6.86829 7.55252 6.80415 7.42424 6.69725C7.18907 6.46207 7.18907 6.09862 7.42424 5.86344L9.32705 3.96063C9.96845 3.31923 9.96845 2.29299 9.32705 1.6516C8.68566 1.0102 7.65942 1.0102 7.01803 1.6516L5.22211 3.44751C4.98694 3.68269 4.62348 3.68269 4.3883 3.44751C4.15312 3.21233 4.15312 2.84887 4.3883 2.61369L6.18421 0.817781C7.27458 -0.272594 9.0705 -0.272594 10.1823 0.817781C11.2726 1.90816 11.2726 3.70407 10.1823 4.81582L8.27944 6.71863C8.17254 6.82553 8.0015 6.86829 7.85184 6.86829Z" fill="white"/>

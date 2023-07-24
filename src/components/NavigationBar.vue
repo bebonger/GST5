@@ -63,7 +63,7 @@ export default {
 </script>
 
 <template>
-    <header>
+    <header class="background">
         <nav v-if="!mobile" class="flex flex-row w-full h-full items-center overflow-h">
             <RouterLink class="logo" :to="{name: 'home'}"><svg class="ml-16" width="206" height="32" viewBox="0 0 206 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0.54834 31.1206V0.117493H46.2647V6.46626H17.3726V24.7719H30.8637V18.0528H23.4568V13.0266H46.2594V31.1206H0.54834Z" fill="white"/>
@@ -94,16 +94,14 @@ export default {
         </nav>
         <nav v-else class="flex flex-row w-full h-full items-center">
             <i @click="toggleMobileNav" class="flex items-center absolute fa bars-icon" :class="{'fa-bars' : !mobileNav, 'fa-times' : mobileNav }"></i>
-            <transition name="mobile-nav">
-                <ul v-show="mobileNav" class="flex-column w-full items-center justify-center fixed">
-                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
-                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
-                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
-                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'mappool'}">MAPPOOL</RouterLink></li>
-                    <li class="flex items-center"><RouterLink class="link" :to="{name: 'schedules'}">SCHEDULES</RouterLink></li>
-                    <li class="flex items-center w-full overflow-h justify-center"><UserInfoComponent/></li>
-                </ul>
-            </transition>
+            <ul v-show="mobileNav" class="background flex-column w-full items-center justify-center fixed">
+                <li class="flex items-center"><RouterLink class="link" :to="{name: 'home'}">HOME</RouterLink></li>
+                <li class="flex items-center"><RouterLink class="link" :to="{name: 'info'}">INFO</RouterLink></li>
+                <li class="flex items-center"><RouterLink class="link" :to="{name: 'teams'}">TEAMS</RouterLink></li>
+                <li class="flex items-center"><RouterLink class="link" :to="{name: 'mappool'}">MAPPOOL</RouterLink></li>
+                <li class="flex items-center"><RouterLink class="link" :to="{name: 'schedules'}">SCHEDULES</RouterLink></li>
+                <li class="flex items-center w-full overflow-h justify-center"><UserInfoComponent/></li>
+            </ul>
             <i v-if="false" @click="toggleNotificationBox" class="flex items-center justify-center notif-icon">
                 <p class="text-sm p-2 font-bold normal">INVITE</p>
                 <i v-if="notifsAvailable" class="notif-icon-indicator"></i>
@@ -132,8 +130,11 @@ export default {
     }
 }
 
+.background {
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
 header {
-    background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
     width: 100%;
     height: 85px;
@@ -145,7 +146,6 @@ header {
     border-bottom-style: solid;
     border-width: 1px;
     */
-    backdrop-filter: blur(30px);
 
     nav {
 
