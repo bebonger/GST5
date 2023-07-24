@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { PoolMod, type MapInfo } from '@/Interfaces/mappool';
+import type { MapInfo } from '../Interfaces/mappool';
 
 defineProps<{
     mapInfo: MapInfo
